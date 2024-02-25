@@ -1,30 +1,43 @@
 package com.yogesh.employee;
 
+import java.util.Scanner;
+
+import com.yogesh.employee.model.EmployeeModel;
+
 public class EmployeeMain {
 
-	int employeeId ;
-	String employeeName;
-	String employeeMobileNo;
-	double employeeSalary;
+	EmployeeModel employeeModel = new EmployeeModel();
 	
-	public void setEmployeeData(int employeeId , String employeeName , String employeeMobileNo , double employeeSalary)
+	public void setEmployeeData()
 	{
-		this.employeeId = employeeId ;
-		this.employeeName = employeeName ;
-		this.employeeMobileNo = employeeMobileNo ;
-		this.employeeSalary = employeeSalary ;		
+		Scanner scanner = new Scanner(System.in);
+		
+		System.out.print("Enter Employee Id :");
+		employeeModel.setEmployeeId(scanner.nextInt());
+		
+		System.out.print("Enter Employee Name :");
+		employeeModel.setEmployeeName(scanner.next());
+		
+		System.out.print("Enter Employee Mobile No :");
+		employeeModel.setEmployeeMobileNo(scanner.next());
+		
+		System.out.print("Enter Employee Salary :");
+		employeeModel.setEmployeeSalary(scanner.nextDouble());
 	}
 	
 	public void getEmployeeData()
 	{
-		System.out.println("E_Id :" + this.employeeId +"\nE_Name :" + this.employeeName + "\nE_MobileNo :" + this.employeeMobileNo + "\nE_Salary :" + this.employeeSalary);
+		 System.out.println("Employee ID :" + employeeModel.getEmployeeId());
+		 System.out.println("Employee Name :" + employeeModel.getEmployeeName());
+		 System.out.println("Employee Mobile No :" + employeeModel.getEmployeeMobileNo());
+		 System.out.println("Employee Salary :" + employeeModel.getEmployeeSalary()); 
 		
 	}
 	
 	public static void main(String[] args) {
 		
 	EmployeeMain employeemain = new EmployeeMain();
-	employeemain.setEmployeeData(101, "Yogesh", "1234567890", 10000);
+	employeemain.setEmployeeData();
 	employeemain.getEmployeeData();
 
 	}
