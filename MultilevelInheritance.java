@@ -1,39 +1,43 @@
-package SingleInheritance;
+class Base{
 
-class Parent {
-	
-	void baseFun()
+	void dog()
 	{
-		System.out.println("Base Class Function");		
+		System.out.println("Barking..........................");
+	}
+
+
+}
+
+class Child_Base extends Base{
+
+	void fish()
+	{
+		System.out.println("Swiming..........................");
 	}
 
 }
 
-class Child extends Parent {
-	
-	void deriveFun()
+class Child extends Child_Base {
+
+	void monkey()
 	{
-		System.out.println("Derive Class Function");		
+		System.out.println("Eating banana..........................");
 	}
+
+
 
 }
 
-public class MultilevelInheritance extends Child {
+class MultilevelInheritance{
 
-	public void simple()
-	{
-		System.out.println("Multilevel Inheritance Class Function");
-	}
-	
-	
-	public static void main(String[] args) {
-	
-		MultilevelInheritance obj = new MultilevelInheritance();
+	public static void main(String args[]){
 		
-		obj.baseFun();
-		obj.deriveFun();
-		obj.simple();
-		
+		Child child = new Child();
+		child.monkey();
+		child.fish();
+		child.dog();		
+
 	}
+
 
 }
