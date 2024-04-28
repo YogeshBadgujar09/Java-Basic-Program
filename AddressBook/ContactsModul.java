@@ -9,7 +9,7 @@ class ContactsModul{
 	private String phone_Number ;
 	private String email_Id ;
 
-	public void set_first_name(String first_Name)
+	public void set_first_Name(String first_Name)
 	{
 		this.first_Name = first_Name ;
 	}
@@ -39,7 +39,7 @@ class ContactsModul{
 		this.zip_Code = zip_Code ;
 	}
 	
-	public void set_phone_Number()
+	public void set_phone_Number(String phone_Number)
 	{
 		this.phone_Number = phone_Number ;
 	}
@@ -81,7 +81,7 @@ class ContactsModul{
 
 	public String get_phone_Number()
 	{
-		return this.phonr_Number ;
+		return this.phone_Number ;
 	}
 
 	public String get_email_Id()
