@@ -6,6 +6,52 @@ class AddressBookMain
 	ContactsModel contactsModel = new ContactsModel();
 	Scanner sc = new Scanner(System.in);
 
+	
+	public void contactsOperation()
+	{
+		while(true)
+		{
+
+			int choice ;
+		
+			System.out.println("\n1.Add Contact \n2.Edit Contact \n3.Show Contact \n4.Delete Contact \n5.Exit");
+			System.out.println("\nEnter Choice :");
+			choice = sc.nextInt();
+
+			switch(choice)
+			{
+				case 1:
+				addContacts();
+				break ;
+	
+				case 2:
+				editContacts();
+				break ;
+
+				case 3:
+				showContacts();
+				break ;
+
+				case 4:
+				deleteContacts();
+				break ;
+		
+				default :
+				System.out.println("Case not Match");
+			}	
+			
+			if(choice == 5)
+			{
+				System.out.println("\nEXIT");
+				break;
+			}
+		 }
+		
+
+
+	}
+
+	 
 		
 	public void addContacts()
 	{	
@@ -86,6 +132,19 @@ class AddressBookMain
 
 	}
 		
+	public void deleteContacts()
+	{
+		System.out.println("\nContact is Delete Succesfully.");
+		
+		contactsModel.set_first_Name(null);
+		contactsModel.set_last_Name(null);
+		contactsModel.set_address(null);
+		contactsModel.set_city(null);
+		contactsModel.set_state(null);
+		contactsModel.set_zip_Code(null);
+		contactsModel.set_phone_Number(null);
+		contactsModel.set_email_Id(null);
+	}
 	
 	 	
 
@@ -94,10 +153,8 @@ class AddressBookMain
 		System.out.println("Welcome To Address Book\n");
 		
 		AddressBookMain addressBookMain = new AddressBookMain();
-		addressBookMain.addContacts();
-		addressBookMain.showContacts();
-		addressBookMain.editContacts();
-		addressBookMain.showContacts();
+		addressBookMain.contactsOperation();
+		
 	 
 	}
 
