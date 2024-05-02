@@ -1,9 +1,9 @@
 public class ObjectDestroy
 {
-    private int a;
-    private int b;
+    private String a;
+    private String b;
 
-    public void setValue(int a,int b)
+    public void setValue(String a,String b)
     {
         this.a = a;
         this.b = b;
@@ -19,16 +19,19 @@ public class ObjectDestroy
     public static void main(String[] args) {
 
         ObjectDestroy obj = new ObjectDestroy();
-        obj.setValue(10,20);
+        obj.setValue("Rahul","Rohit");
         obj.getValue();
 
-       obj = null;
+        obj = null;
 
         try{
-          obj.getValue();
+            obj.getValue();
         }
-        catch(NullPointerException e){
-            System.out.println("String is Null");
+        catch(NullPointerException e)
+        {
+            System.out.println("String is NULL ");
         }
+
+
     }
 }
