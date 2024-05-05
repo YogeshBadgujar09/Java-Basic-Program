@@ -30,8 +30,14 @@ class ModelClass{
 		return number;
 	}
 
-	
+	@Override
+	public String toString()
+	{
 
-	
-	
+		return "ModelClass{"+ "First Name :'" + firstName + '\'' +   " Last Name :'" + lastName + '\'' + " Number :'" + number + '\'' +  " }";
+
+	}
+
+
+
 }
