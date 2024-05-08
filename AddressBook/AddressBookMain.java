@@ -15,7 +15,7 @@ class AddressBookMain
 
 		do{
 
-			System.out.println("\n1.Add Contact \n2.Edit Contact \n3.Show Contact \n4.Delete Contact \n5.FindContact\n6.EXIT");
+			System.out.println("\n1.Add Contact \n2.Edit Contact \n3.Show Contact \n4.Delete Contact \n5.EXIT");
 			System.out.println("\nEnter Choice :");
 			choice = sc.nextInt();
 
@@ -25,9 +25,9 @@ class AddressBookMain
 				addContacts();
 				break ;
 
-			/*	case 2:
+				case 2:
 				editContacts();
-				break ; */
+				break ;
 
 				case 3:
 				showContacts();
@@ -40,9 +40,6 @@ class AddressBookMain
 
 			*/
 
-				case 5:
-				findContact();
-				break;
 
 				default :
 				System.out.println("Case not Match");
@@ -87,57 +84,49 @@ class AddressBookMain
 	}
 
 
-	public void showContacts()
+ 	public void showContacts()
 	{
-		for(int i=0 ; i<contactsList.size() ; i++){
-
+		for(int i=0 ; i<contactsList.size() ; i++)
+		{
 			ContactsModel contactsModel = contactsList.get(i);
 
 			System.out.println(contactsModel.toString());
-
 		}
+
+
+	}
+
+
+
+
+	public void editContacts()
+	{
+			String fname ;
+			System.out.println("Enter a Name to Find Contact :");
+			fname = sc.next();
+
+			int flag = 0;
+
+			for(int i=0 ; i<contactsList.size() ; i++)
+			{
+				ContactsModel contactsModel = contactsList.get(i);
+
+				if(fname.equals(contactsModel.get_first_Name()))
+				{
+					flag = 1;
+					System.out.println("contacts Found");
+				}
+			}
+
+			if(flag == 0){
+				System.out.println("Contact Not Found");
+			}
+
+
 
 	}
 
 	/*
-
-	public void editContacts()
-	{
-
-		System.out.println("\nEnter First Name to Edit Contact :");
-		String fname = sc.next();
-
-		if(fname.equals(contactsModel.get_first_Name()))
-		{
-			System.out.println("Contact Found.");
-
-			System.out.print("Enter Last Name :");
-			contactsModel.set_last_Name(sc.next());
-
-			System.out.print("Enter Address :");
-			contactsModel.set_address(sc.next());
-
-			System.out.print("Enter city :");
-			contactsModel.set_city(sc.next());
-
-			System.out.print("Enter State :");
-			contactsModel.set_state(sc.next());
-
-			System.out.print("Enter Zip Code :");
-			contactsModel.set_zip_Code(sc.next());
-
-			System.out.print("Enter Phone Number :");
-			contactsModel.set_phone_Number(sc.next());
-
-			System.out.print("Enter Email :");
-			contactsModel.set_email_Id(sc.next());
-		}
-		else
-		{
-			System.out.println("Contact not found");
-		}
-
-	}
 
 	public void deleteContacts()
 	{
@@ -158,33 +147,8 @@ class AddressBookMain
 
 	*/
 
-	public void findContact()
-	{
-		String fname ;
-		System.out.println("Enter First Name to Find Contact :");
-		fname = sc.next();
 
-				for(int i=0 ; i<contactsList.size() ; i++)
-				{
 
-					ContactsModel contactsModel = contactsList.get(i);
-
-						if(fname.equals(contactsModel.get_first_Name()))
-						{
-							System.out.println("Contact Found");
-							break  ;
-						}
-						else
-						{
-							if()
-						}
-						/*if(fname.equals(contactsModel.get_first_Name()) == false)
-			     		{
-						 		System.out.println("Contact Not Found");
-						}*/
-				}
-
-	}
 
 	public static void main(String args[])
 	{
