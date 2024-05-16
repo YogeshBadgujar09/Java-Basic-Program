@@ -24,7 +24,11 @@ class InterfaceRefference{
 
 	public static void main(String args[])
 	{
+		/**
+		Here interface take the refference of MyClass to create an obj
+		*/
 		Sample obj =  new MyClass();
+
 
 		obj.function1();
 		obj.function2();
