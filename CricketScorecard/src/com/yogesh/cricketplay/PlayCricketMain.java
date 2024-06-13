@@ -25,6 +25,34 @@ public class PlayCricketMain {
         System.out.println("\nTeams Are Playing : " + playingTeamsModel.toString());
     }
 
+    public void Batting()
+    {
+        final int inningOver = 5 ;
+        int oversNumber = 0;
+
+        for(int i=oversNumber ; i<inningOver; i++)
+        {
+            System.out.println("Over Number : " + i);
+            int overBall = 1 ;
+
+            int illegalBall;
+
+            while(overBall < 7 )
+            {
+                int run ;
+
+                run = random.nextInt(7);
+
+                totalRun = totalRun + run ;
+
+                System.out.println("\nOver Balls :" + i + "." + overBall + "\tRun :" + run + "\tTotalScore :" + totalRun)  ;
+
+                overBall++;
+            }
+
+        }
+    }
+
     public void makeDecisionToss()
     {
         System.out.print(" Won the toss ");
@@ -34,30 +62,7 @@ public class PlayCricketMain {
 
         if(elected == BAT ){
             System.out.print("and Elected to Bat First");
-
-            final int inningOver = 5 ;
-            int oversNumber = 0;
-
-            for(int i=oversNumber ; i<inningOver; i++)
-            {
-                System.out.println("Over Number : " + i);
-                int overBall = 1 ;
-
-                while(overBall < 7)
-                {
-                    int run ;
-
-                    run = random.nextInt(7);
-                    totalRun = totalRun + run ;
-
-                    System.out.println("\nOver Balls :" + i + "." + overBall + "\tRun :" + run + "\tTotalScore :" + totalRun)  ;
-
-                    overBall++;
-                }
-
-            }
-
-
+            Batting();
         }
         else{
             System.out.print("and Elected to Bowl First");
@@ -66,7 +71,7 @@ public class PlayCricketMain {
 
     }
 
-    public void flippingToss()
+    public void flipCoin()
     {
         int toss ;
 
@@ -99,7 +104,7 @@ public class PlayCricketMain {
         PlayCricketMain playCricket = new PlayCricketMain();
         playCricket.SetTeamsName();
         playCricket.displayTeams();
-        playCricket.flippingToss();
+        playCricket.flipCoin();
 
     }
 }
