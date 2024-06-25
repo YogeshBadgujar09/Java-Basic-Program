@@ -26,6 +26,6 @@ class InterfaceStaticMethode{
 		obj.fun1();
 		obj.fun2();
 		obj.fun3();
-		MyInterface4.fun4();
+		MyInterface3.fun4();
 	}
 }
