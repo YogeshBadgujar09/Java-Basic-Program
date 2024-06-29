@@ -1,4 +1,3 @@
-// importing Java AWT class  
 import java.awt.*;    
   
 // extending Frame class to our class AWTExample1  
@@ -37,4 +36,4 @@ AWTExample1 f = new AWTExample1();
   
 }  
   
-}    
+}  
