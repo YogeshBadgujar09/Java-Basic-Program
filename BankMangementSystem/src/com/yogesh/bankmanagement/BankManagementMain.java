@@ -1,12 +1,18 @@
 package com.yogesh.bankmanagement;
 
+import java.util.List;
 import java.util.Scanner ;
 import java.util.Random ;
+import java.util.ArrayList ;
 
 public class BankManagementMain {
 
     Scanner scanner = new Scanner(System.in);
-    NewAccountInfoModel newAccountInfoModel = new NewAccountInfoModel();
+
+    List<NewAccountInfoModel> multipleAccounts = new ArrayList<>();
+
+    NewAccountInfoModel newAccountInfoModel ;
+
 
     public void operationOnAccount()
     {
@@ -24,14 +30,14 @@ public class BankManagementMain {
                 case 1 :
                     openAccount();
                     break;
-
-                case 2 :
-                    accountInfo();
-                    break;
-
-                case 3 :
-                    closeAccount();
-                    break;
+//
+//                case 2 :
+//                    accountInfo();
+//                    break;
+//
+//                case 3 :
+//                    closeAccount();
+//                    break;
             }
         } while(choice < 4 );
     }
@@ -55,6 +61,9 @@ public class BankManagementMain {
     }
 
     public void openAccount() {
+
+        newAccountInfoModel = new NewAccountInfoModel();
+
         System.out.println("Enter Name :");
         newAccountInfoModel.setName(scanner.next());
 
@@ -85,15 +94,17 @@ public class BankManagementMain {
 
         System.out.println("Enter Initial Balance to Open Account :");
         newAccountInfoModel.setBalance(scanner.next());
+
+        multipleAccounts.add(newAccountInfoModel);
     }
 
-    public void accountInfo() {
-        System.out.println(newAccountInfoModel.toString());
-    }
-
-    public void closeAccount() {
-        newAccountInfoModel = null;
-    }
+//    public void accountInfo() {
+//        System.out.println(newAccountInfoModel.toString());
+//    }
+//
+//    public void closeAccount() {
+//        newAccountInfoModel = null;
+//    }
 
 
     public static void main(String[] args) {
