@@ -1,11 +1,58 @@
 package com.yogesh.bankmanagement;
 
 import java.util.Scanner ;
+import java.util.Random ;
 
 public class BankManagementMain {
 
     Scanner scanner = new Scanner(System.in);
     NewAccountInfoModel newAccountInfoModel = new NewAccountInfoModel();
+
+    public void operationOnAccount()
+    {
+        int choice ;
+
+        do {
+            System.out.println("\n*** Welcome to Bank Management System ***");
+            System.out.println("\n1.Open Account 2.Present Account Info 3.Close Account");
+
+            System.out.println("\nEnter Your Choice :");
+            choice = scanner.nextInt();
+
+            switch (choice)
+            {
+                case 1 :
+                    openAccount();
+                    break;
+
+                case 2 :
+                    accountInfo();
+                    break;
+
+                case 3 :
+                    closeAccount();
+                    break;
+            }
+        } while(choice < 4 );
+    }
+
+    public String generateAccountNumber()
+    {
+        Random random = new Random();
+        String accountNoStrForm  ;
+
+        while(true)
+        {
+            int accountNumber = random.nextInt();
+             accountNoStrForm = String.valueOf(accountNumber);
+
+            if(accountNumber > 1 && accountNoStrForm.length() == 10)
+            {
+                return  "0000" + accountNoStrForm  ;
+            }
+        }
+
+    }
 
     public void openAccount() {
         System.out.println("Enter Name :");
@@ -32,6 +79,10 @@ public class BankManagementMain {
         System.out.println("Enter email :");
         newAccountInfoModel.setEmail(scanner.next());
 
+        System.out.println("Your Account Number is :  ");
+        newAccountInfoModel.setAccountNumber(generateAccountNumber());
+        System.out.println(newAccountInfoModel.getAccountNumber());
+
         System.out.println("Enter Initial Balance to Open Account :");
         newAccountInfoModel.setBalance(scanner.next());
     }
@@ -47,13 +98,9 @@ public class BankManagementMain {
 
     public static void main(String[] args) {
 
-        System.out.println("Welcome to Bank Management System ");
-
         BankManagementMain bankManagementMain = new BankManagementMain();
-        bankManagementMain.openAccount();
-        bankManagementMain.accountInfo();
-        bankManagementMain.closeAccount();
-      
+        bankManagementMain.operationOnAccount();
+
     }
 
 }

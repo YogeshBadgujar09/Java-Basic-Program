@@ -11,6 +11,8 @@ public class NewAccountInfoModel
     String city ;
     String state ;
     String email ;
+
+    String accountNumber ;
     String balance ;
 
     public String getName() {
@@ -77,6 +79,14 @@ public class NewAccountInfoModel
         this.email = email;
     }
 
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+
     public String getBalance() {
         return balance;
     }
@@ -84,6 +94,7 @@ public class NewAccountInfoModel
     public void setBalance(String balance) {
         this.balance = balance;
     }
+
 
     @Override
     public String toString() {
@@ -96,6 +107,7 @@ public class NewAccountInfoModel
                 ", city='" + city + '\'' +
                 ", state='" + state + '\'' +
                 ", email='" + email + '\'' +
+                ", accountNumber='" + accountNumber + '\'' +
                 ", balance='" + balance + '\'' +
                 '}';
     }
