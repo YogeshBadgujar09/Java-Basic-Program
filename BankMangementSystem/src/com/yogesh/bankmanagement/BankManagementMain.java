@@ -20,7 +20,7 @@ public class BankManagementMain {
 
         do {
             System.out.println("\n*** Welcome to Bank Management System ***");
-            System.out.println("\n1.Open Account 2.View All Accounts 3.Search Account");
+            System.out.println("\n1.Open Account 2.Close Account  3.Search Account 4.View All Accounts");
 
             System.out.println("\nEnter Your Choice :");
             choice = scanner.nextInt();
@@ -32,18 +32,18 @@ public class BankManagementMain {
                     break;
 
                 case 2 :
-                    viewAllAccounts();
+                    closeAccount();
                     break;
 
                 case 3 :
                     searchAccount();
                     break;
 
-//                case 3 :
-//                    closeAccount();
-//                    break;
+               case 4 :
+                     viewAllAccounts();
+                break;
             }
-        } while(choice < 4 );
+        } while(choice < 5 );
     }
 
     public String generateAccountNumber()
@@ -132,7 +132,24 @@ public class BankManagementMain {
     }
 
     public void closeAccount() {
-        newAccountInfoModel = null;
+
+        System.out.println("Enter Account Number   : ");
+        String accountNumber = scanner.next();
+
+        if(multipleAccounts != null)
+        {
+            for(NewAccountInfoModel newAccountInfoModel : multipleAccounts)
+            {
+                if(accountNumber.equals(newAccountInfoModel.accountNumber))
+                {
+                   newAccountInfoModel = null ;
+                }
+            }
+        }
+        else {
+            System.out.println("Account is not Available");
+        }
+
     }
 
 
