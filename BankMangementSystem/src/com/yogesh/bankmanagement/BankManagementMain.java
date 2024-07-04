@@ -20,7 +20,7 @@ public class BankManagementMain {
 
         do {
             System.out.println("\n*** Welcome to Bank Management System ***");
-            System.out.println("\n1.Open Account 2.Present Account Info 3.Close Account");
+            System.out.println("\n1.Open Account 2.View All Accounts 3.Search Account");
 
             System.out.println("\nEnter Your Choice :");
             choice = scanner.nextInt();
@@ -30,11 +30,15 @@ public class BankManagementMain {
                 case 1 :
                     openAccount();
                     break;
-//
-//                case 2 :
-//                    accountInfo();
-//                    break;
-//
+
+                case 2 :
+                    viewAllAccounts();
+                    break;
+
+                case 3 :
+                    searchAccount();
+                    break;
+
 //                case 3 :
 //                    closeAccount();
 //                    break;
@@ -98,13 +102,38 @@ public class BankManagementMain {
         multipleAccounts.add(newAccountInfoModel);
     }
 
-//    public void accountInfo() {
-//        System.out.println(newAccountInfoModel.toString());
-//    }
-//
-//    public void closeAccount() {
-//        newAccountInfoModel = null;
-//    }
+    public void viewAllAccounts() {
+
+        for (int i=0 ; i<multipleAccounts.size() ; i++)
+        {
+            System.out.println(multipleAccounts.get(i));
+        }
+
+    }
+
+    public void searchAccount()
+    {
+        System.out.println("Enter Account Number   : ");
+        String accountNumber = scanner.next();
+
+        if(multipleAccounts != null)
+        {
+            for(NewAccountInfoModel newAccountInfoModel : multipleAccounts)
+            {
+                if(accountNumber.equals(newAccountInfoModel.accountNumber))
+                {
+                    System.out.println(newAccountInfoModel.toString());
+                }
+            }
+        }
+        else {
+            System.out.println("Account is not Available");
+        }
+    }
+
+    public void closeAccount() {
+        newAccountInfoModel = null;
+    }
 
 
     public static void main(String[] args) {
