@@ -8,14 +8,9 @@ import java.util.ArrayList ;
 public class BankManagementMain {
 
     Scanner scanner = new Scanner(System.in);
-
     List<NewAccountInfoModel> multipleAccounts = new ArrayList<>();
 
-    NewAccountInfoModel newAccountInfoModel = new NewAccountInfoModel();
-
-
-    public void operationOnAccount()
-    {
+    public void operationOnAccount() {
         int choice ;
 
         do {
@@ -46,8 +41,7 @@ public class BankManagementMain {
         } while(choice < 5 );
     }
 
-    public String generateAccountNumber()
-    {
+    public String generateAccountNumber() {
         Random random = new Random();
         String accountNoStrForm  ;
 
@@ -64,11 +58,32 @@ public class BankManagementMain {
 
     }
 
+    public NewAccountInfoModel findAccountforOperations() {
+        System.out.println("Enter Account Number  : ");
+        String accountNumber = scanner.next();
+
+        boolean flag = false ;
+
+        if(multipleAccounts != null)
+        {
+            for(NewAccountInfoModel newAccountInfoModel : multipleAccounts )
+            {
+                if(accountNumber.equals(newAccountInfoModel.getAccountNumber()))
+                {
+                    flag = true ;
+                    return newAccountInfoModel ;
+                }
+            }
+        }
+        if(!flag){
+            System.out.println("Account is not available");
+        }
+        return null ;
+    }
+
     public void openAccount() {
 
-
-
-        newAccountInfoModel = new NewAccountInfoModel();
+        NewAccountInfoModel newAccountInfoModel = new NewAccountInfoModel();
 
         System.out.println("Enter Name :");
         newAccountInfoModel.setName(scanner.next());
@@ -104,62 +119,33 @@ public class BankManagementMain {
         multipleAccounts.add(newAccountInfoModel);
     }
 
+
     public void viewAllAccounts() {
 
-
-        for (int i=0 ; i<multipleAccounts.size() ; i++)
+        if(multipleAccounts !=  null)
         {
-            System.out.println(multipleAccounts.get(i));
+            for (NewAccountInfoModel multipleAccount : multipleAccounts) {
+                System.out.println(multipleAccount);
+            }
         }
 
     }
 
-    public void searchAccount()
-    {
-        System.out.println("Enter Account Number   : ");
-        String accountNumber = scanner.next();
+    public void searchAccount() {
 
-        if(multipleAccounts != null)
-        {
-            for(NewAccountInfoModel newAccountInfoModel : multipleAccounts)
-            {
-                if(accountNumber.equals(newAccountInfoModel.accountNumber))
-                {
-                    System.out.println(newAccountInfoModel.toString());
-                }
-            }
+        NewAccountInfoModel newAccountInfoModel = findAccountforOperations() ;
+
+        if(newAccountInfoModel != null){
+            System.out.println(newAccountInfoModel.toString());
         }
-        else {
-            System.out.println("Account is not Available");
-        }
+
     }
 
     public void closeAccount() {
 
-        System.out.println("Enter Account Number   : ");
-        String accountNumber = scanner.next();
-
-
-
-        if(multipleAccounts != null)
-        {
-            for(int i=0 ; i<multipleAccounts.size() ; i++)
-            {
-
-                newAccountInfoModel = multipleAccounts.get(i);
-                if(accountNumber.equals(newAccountInfoModel.getAccountNumber()))
-                {
-                   if(newAccountInfoModel != null )
-                   {
-                        multipleAccounts.remove(newAccountInfoModel) ;
-                   }
-
-
-                }
-            }
-        }
-        else {
-            System.out.println("Account is not Available");
+        NewAccountInfoModel newAccountInfoModel = findAccountforOperations();
+        if(newAccountInfoModel != null ) {
+             multipleAccounts.remove(newAccountInfoModel) ;
         }
 
     }
