@@ -11,7 +11,7 @@ public class BankManagementMain {
 
     List<NewAccountInfoModel> multipleAccounts = new ArrayList<>();
 
-    NewAccountInfoModel newAccountInfoModel ;
+    NewAccountInfoModel newAccountInfoModel = new NewAccountInfoModel();
 
 
     public void operationOnAccount()
@@ -66,6 +66,8 @@ public class BankManagementMain {
 
     public void openAccount() {
 
+
+
         newAccountInfoModel = new NewAccountInfoModel();
 
         System.out.println("Enter Name :");
@@ -104,6 +106,7 @@ public class BankManagementMain {
 
     public void viewAllAccounts() {
 
+
         for (int i=0 ; i<multipleAccounts.size() ; i++)
         {
             System.out.println(multipleAccounts.get(i));
@@ -136,13 +139,22 @@ public class BankManagementMain {
         System.out.println("Enter Account Number   : ");
         String accountNumber = scanner.next();
 
+
+
         if(multipleAccounts != null)
         {
-            for(NewAccountInfoModel newAccountInfoModel : multipleAccounts)
+            for(int i=0 ; i<multipleAccounts.size() ; i++)
             {
-                if(accountNumber.equals(newAccountInfoModel.accountNumber))
+
+                newAccountInfoModel = multipleAccounts.get(i);
+                if(accountNumber.equals(newAccountInfoModel.getAccountNumber()))
                 {
-                   newAccountInfoModel = null ;
+                   if(newAccountInfoModel != null )
+                   {
+                        multipleAccounts.remove(newAccountInfoModel) ;
+                   }
+
+
                 }
             }
         }
