@@ -15,7 +15,7 @@ public class BankManagementMain {
 
         do {
             System.out.println("\n*** Welcome to Bank Management System ***");
-            System.out.println("\n1.Open Account 2.Close Account  3.Search Account 4.Cash Operation 5.View All Accounts");
+            System.out.println("\n1.Open Account 2.Close Account  3.Search Account 4.Cash Operation 5.View All Accounts 6.Update KYC");
 
             System.out.println("\nEnter Your Choice :");
             choice = scanner.nextInt();
@@ -41,12 +41,50 @@ public class BankManagementMain {
                case 5 :
                      viewAllAccounts();
                 break;
+
+                case 6 :
+                    updateKYC();
+                break;
+
             }
-        } while(choice < 6 );
+        } while(choice < 7 );
     }
 
-    public void cashOperation()
-    {
+
+    public void updateKYC() {
+        NewAccountInfoModel newAccountInfoModel = findAccount() ;
+
+        if(newAccountInfoModel != null )
+        {
+            System.out.println("--- Confirm Account ---" + newAccountInfoModel.toString() );
+
+            System.out.println("Enter Name :");
+            newAccountInfoModel.setName(scanner.next());
+
+            System.out.println("Enter aadhar number :");
+            newAccountInfoModel.setAadharNo(scanner.next());
+
+            System.out.println("Enter Mobile Number :");
+            newAccountInfoModel.setMobileNo(scanner.next());
+
+            System.out.println("Enter Your age :");
+            newAccountInfoModel.setAge(scanner.next());
+
+            System.out.println("Enter address");
+            newAccountInfoModel.setAddress(scanner.next());
+
+            System.out.println("Enter City :");
+            newAccountInfoModel.setCity(scanner.next());
+
+            System.out.println("Enter State :");
+            newAccountInfoModel.setState(scanner.next());
+
+            System.out.println("Enter email :");
+            newAccountInfoModel.setEmail(scanner.next());
+
+          }
+    }
+    public void cashOperation() {
         System.out.println("\n**** Cash Operation  ****");
 
         NewAccountInfoModel newAccountInfoModel = findAccount() ;
@@ -104,8 +142,7 @@ public class BankManagementMain {
      * Use for code optimization
      * @return amount for code optimization
      */
-    public String enterAmount()
-    {
+    public String enterAmount() {
         System.out.println("Enter a amount for Operation  :");
         String amount = scanner.next();
 
