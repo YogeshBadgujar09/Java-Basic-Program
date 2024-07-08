@@ -10,12 +10,12 @@ public class BankManagementMain {
     Scanner scanner = new Scanner(System.in);
     List<NewAccountInfoModel> multipleAccounts = new ArrayList<>();
 
-    public void operationOnAccount() {
+    public void operation() {
         int choice ;
 
         do {
             System.out.println("\n*** Welcome to Bank Management System ***");
-            System.out.println("\n1.Open Account 2.Close Account  3.Search Account 4.View All Accounts");
+            System.out.println("\n1.Open Account 2.Close Account  3.Search Account 4.Cash Operation 5.View All Accounts");
 
             System.out.println("\nEnter Your Choice :");
             choice = scanner.nextInt();
@@ -34,13 +34,83 @@ public class BankManagementMain {
                     searchAccount();
                     break;
 
-               case 4 :
+                case 4 :
+                    cashOperation();
+                    break;
+
+               case 5 :
                      viewAllAccounts();
                 break;
             }
-        } while(choice < 5 );
+        } while(choice < 6 );
     }
 
+    public void cashOperation()
+    {
+        System.out.println("\n**** Cash Operation  ****");
+
+        NewAccountInfoModel newAccountInfoModel = findAccount() ;
+
+        if(newAccountInfoModel != null)
+        {
+            System.out.println("----  Confirm Account Information ----\n"  + newAccountInfoModel.toString());
+
+            System.out.println("\n1.Deposit Cash 2.Withdraw Cash ");
+
+            System.out.println("Enter Your Choice for Cash Operation :");
+            int choice = scanner.nextInt();
+
+            String balance = newAccountInfoModel.balance;
+
+            String amount ;
+
+            switch (choice)
+            {
+
+                case 1 :
+                    amount = enterAmount() ;
+                    balance = String.valueOf(Long.parseLong(balance) + Long.parseLong(amount));
+                break;
+
+                case 2 :
+                    final int MINIMUM_BALANCE = 1000  ;
+
+                    amount = enterAmount() ;
+
+                    String balanceValidation =  String.valueOf(Long.parseLong(balance) - Long.parseLong(amount) );
+
+                    if(Long.parseLong(amount) < Long.parseLong(balance) && Long.parseLong(balanceValidation) >=  MINIMUM_BALANCE)
+                    {
+                        balance = balanceValidation ;
+                    }
+                    else{
+
+                        System.out.println("Your balance is " + balance + " So enter valid amount." );
+
+                        if(Long.parseLong(balanceValidation) <  MINIMUM_BALANCE)
+                           System.out.println("Keep " + MINIMUM_BALANCE + " Minimum amount in Account");
+                    }
+
+                break ;
+            }
+
+            newAccountInfoModel.setBalance(balance);
+        }
+
+    }
+
+    /**
+     * This function is create for Take an amount from user.
+     * Use for code optimization
+     * @return amount for code optimization
+     */
+    public String enterAmount()
+    {
+        System.out.println("Enter a amount for Operation  :");
+        String amount = scanner.next();
+
+        return amount ;
+    }
     public String generateAccountNumber() {
         Random random = new Random();
         String accountNoStrForm  ;
@@ -58,7 +128,7 @@ public class BankManagementMain {
 
     }
 
-    public NewAccountInfoModel findAccountforOperations() {
+    public NewAccountInfoModel findAccount() {
         System.out.println("Enter Account Number  : ");
         String accountNumber = scanner.next();
 
@@ -119,7 +189,6 @@ public class BankManagementMain {
         multipleAccounts.add(newAccountInfoModel);
     }
 
-
     public void viewAllAccounts() {
 
         if(multipleAccounts !=  null)
@@ -133,7 +202,7 @@ public class BankManagementMain {
 
     public void searchAccount() {
 
-        NewAccountInfoModel newAccountInfoModel = findAccountforOperations() ;
+        NewAccountInfoModel newAccountInfoModel = findAccount() ;
 
         if(newAccountInfoModel != null){
             System.out.println(newAccountInfoModel.toString());
@@ -143,7 +212,7 @@ public class BankManagementMain {
 
     public void closeAccount() {
 
-        NewAccountInfoModel newAccountInfoModel = findAccountforOperations();
+        NewAccountInfoModel newAccountInfoModel = findAccount();
         if(newAccountInfoModel != null ) {
              multipleAccounts.remove(newAccountInfoModel) ;
         }
@@ -154,7 +223,7 @@ public class BankManagementMain {
     public static void main(String[] args) {
 
         BankManagementMain bankManagementMain = new BankManagementMain();
-        bankManagementMain.operationOnAccount();
+        bankManagementMain.operation();
 
     }
 
