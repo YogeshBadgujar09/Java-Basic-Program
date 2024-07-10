@@ -1,5 +1,8 @@
 package com.yogesh.bankmanagement;
 
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+
 public class NewAccountInfoModel
 {
 
@@ -20,15 +23,39 @@ public class NewAccountInfoModel
     }
 
     public void setName(String name) {
-        this.name = name;
+
+        Pattern pattern = Pattern.compile("^[A-Za-z]{2,}$");
+        Matcher matcher = pattern.matcher(name);
+
+        if(matcher.matches())
+        {
+            this.name = name;
+        }
+        else {
+            System.out.println("Enter valid name");
+        }
+
     }
+
+
 
     public String getAadharNo() {
         return aadharNo;
     }
 
     public void setAadharNo(String aadharNo) {
-        this.aadharNo = aadharNo;
+
+        Pattern pattern = Pattern.compile("^[0-9]{12}$");
+        Matcher matcher = pattern.matcher(aadharNo);
+
+        if(matcher.matches())
+        {
+            this.aadharNo = aadharNo;
+        }
+        else {
+            System.out.println("Enter valid Aadhar Number");
+        }
+
     }
 
     public String getMobileNo() {
