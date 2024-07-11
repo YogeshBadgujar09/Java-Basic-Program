@@ -18,14 +18,16 @@ public class NewAccountInfoModel
     String accountNumber ;
     String balance ;
 
+    Pattern pattern ;
+    Matcher matcher ;
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
 
-        Pattern pattern = Pattern.compile("^[A-Za-z]{2,}$");
-        Matcher matcher = pattern.matcher(name);
+        pattern = Pattern.compile("^[A-Za-z]{2,}$");
+        matcher = pattern.matcher(name);
 
         if(matcher.matches())
         {
@@ -45,8 +47,8 @@ public class NewAccountInfoModel
 
     public void setAadharNo(String aadharNo) {
 
-        Pattern pattern = Pattern.compile("^[0-9]{12}$");
-        Matcher matcher = pattern.matcher(aadharNo);
+        pattern = Pattern.compile("^[0-9]{12}$");
+        matcher = pattern.matcher(aadharNo);
 
         if(matcher.matches())
         {
@@ -63,15 +65,37 @@ public class NewAccountInfoModel
     }
 
     public void setMobileNo(String mobileNo) {
-        this.mobileNo = mobileNo;
+
+        pattern = Pattern.compile("^[0-9]{10}$");
+        matcher = pattern.matcher(mobileNo);
+
+        if(matcher.matches())
+        {
+            this.mobileNo = mobileNo;
+        }
+        else{
+            System.out.println("Enter valid Mobile Number ");
+        }
+
     }
 
     public String getAge() {
         return age;
     }
 
-    public void setAge(String age) {
-        this.age = age;
+    public void setAge(String age)
+    {
+        pattern = Pattern.compile("^[0-9]{2}$");
+        matcher = pattern.matcher(age);
+
+        if(matcher.matches())
+        {
+            this.age = age ;
+        }
+        else{
+            System.out.println("Enter valid Age ");
+        }
+
     }
 
     public String getAddress() {
@@ -87,7 +111,17 @@ public class NewAccountInfoModel
     }
 
     public void setCity(String city) {
-        this.city = city;
+
+        pattern = Pattern.compile("^[A-Za-z]{4,}$");
+        matcher = pattern.matcher(city);
+
+        if(matcher.matches())
+        {
+            this.city = city ;
+        }
+        else {
+            System.out.println("Enter Valid City Name Minimum 4 Character");
+        }
     }
 
     public String getState() {
@@ -95,10 +129,23 @@ public class NewAccountInfoModel
     }
 
     public void setState(String state) {
-        this.state = state;
+
+
+        pattern = Pattern.compile("^[A-Za-z]{3,}$");
+        matcher = pattern.matcher(city);
+
+        if(matcher.matches())
+        {
+            this.state = state;
+        }
+        else {
+            System.out.println("Enter Valid State");
+        }
     }
 
     public String getEmail() {
+
+
         return email;
     }
 
@@ -119,7 +166,19 @@ public class NewAccountInfoModel
     }
 
     public void setBalance(String balance) {
-        this.balance = balance;
+
+        pattern = Pattern.compile("^[0-9]{1,}$");
+        matcher = pattern.matcher(balance);
+
+        if(matcher.matches())
+        {
+            this.balance = balance;
+        }
+        else {
+            System.out.println("Enter Valid State");
+        }
+
+
     }
 
 

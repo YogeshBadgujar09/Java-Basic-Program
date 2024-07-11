@@ -149,6 +149,7 @@ public class BankManagementMain {
         return amount ;
     }
     public String generateAccountNumber() {
+
         Random random = new Random();
         String accountNoStrForm  ;
 
