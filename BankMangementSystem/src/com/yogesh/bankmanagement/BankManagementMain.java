@@ -59,28 +59,28 @@ public class BankManagementMain {
             System.out.println("--- Confirm Account ---" + newAccountInfoModel.toString() );
 
             System.out.println("Enter Name :");
-            newAccountInfoModel.setName(scanner.next());
+            newAccountInfoModel.setName(newAccountInfoModel.validateInput(scanner.next(),scanner));
 
             System.out.println("Enter aadhar number :");
-            newAccountInfoModel.setAadharNo(scanner.next());
+            newAccountInfoModel.setAadharNo(scanner.next(),scanner);
 
             System.out.println("Enter Mobile Number :");
-            newAccountInfoModel.setMobileNo(scanner.next());
+            newAccountInfoModel.setMobileNo(scanner.next(),scanner);
 
             System.out.println("Enter Your age :");
-            newAccountInfoModel.setAge(scanner.next());
+            newAccountInfoModel.setAge(scanner.next(),scanner);
 
             System.out.println("Enter address");
-            newAccountInfoModel.setAddress(scanner.next());
+            newAccountInfoModel.setAddress(newAccountInfoModel.validateInput(scanner.next(),scanner));
 
             System.out.println("Enter City :");
-            newAccountInfoModel.setCity(scanner.next());
+            newAccountInfoModel.setCity(newAccountInfoModel.validateInput(scanner.next(),scanner));
 
             System.out.println("Enter State :");
-            newAccountInfoModel.setState(scanner.next());
+            newAccountInfoModel.setState(newAccountInfoModel.validateInput(scanner.next(),scanner));
 
             System.out.println("Enter email :");
-            newAccountInfoModel.setEmail(scanner.next());
+            newAccountInfoModel.setEmail(scanner.next(),scanner);
 
           }
     }
@@ -194,28 +194,28 @@ public class BankManagementMain {
         NewAccountInfoModel newAccountInfoModel = new NewAccountInfoModel();
 
         System.out.println("Enter Name :");
-        newAccountInfoModel.setName(scanner.next());
+        newAccountInfoModel.setName(newAccountInfoModel.validateInput(scanner.next(),scanner));
 
         System.out.println("Enter aadhar number :");
-        newAccountInfoModel.setAadharNo(scanner.next());
+        newAccountInfoModel.setAadharNo(scanner.next(),scanner);
 
         System.out.println("Enter Mobile Number :");
-        newAccountInfoModel.setMobileNo(scanner.next());
+        newAccountInfoModel.setMobileNo(scanner.next(),scanner);
 
         System.out.println("Enter Your age :");
-        newAccountInfoModel.setAge(scanner.next());
+        newAccountInfoModel.setAge(scanner.next(),scanner);
 
         System.out.println("Enter address");
-        newAccountInfoModel.setAddress(scanner.next());
+        newAccountInfoModel.setAddress(newAccountInfoModel.validateInput(scanner.next(),scanner));
 
         System.out.println("Enter City :");
-        newAccountInfoModel.setCity(scanner.next());
+        newAccountInfoModel.setCity(newAccountInfoModel.validateInput(scanner.next(),scanner));
 
         System.out.println("Enter State :");
-        newAccountInfoModel.setState(scanner.next());
+        newAccountInfoModel.setState(newAccountInfoModel.validateInput(scanner.next(),scanner));
 
         System.out.println("Enter email :");
-        newAccountInfoModel.setEmail(scanner.next());
+        newAccountInfoModel.setEmail(scanner.next(),scanner);
 
         System.out.println("Your Account Number is :  ");
         newAccountInfoModel.setAccountNumber(generateAccountNumber());

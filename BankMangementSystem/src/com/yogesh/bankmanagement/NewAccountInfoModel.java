@@ -1,5 +1,6 @@
 package com.yogesh.bankmanagement;
 
+import java.util.Scanner;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
@@ -14,173 +15,155 @@ public class NewAccountInfoModel
     String city ;
     String state ;
     String email ;
-
     String accountNumber ;
     String balance ;
 
-    Pattern pattern ;
-    Matcher matcher ;
-    public String getName() {
-        return name;
+    public String validateInput(String data, Scanner scanner) {
+        Pattern pattern = Pattern.compile("[A-Za-z]{2,}");
+        Matcher matcher = pattern.matcher(data);
+
+        while (!matcher.matches())
+        {
+            System.out.println("please enter valid data[Enter Minimum 2 character");
+            data = scanner.next();
+            matcher = pattern.matcher(data);
+        }
+
+        return data ;
     }
 
     public void setName(String name) {
+        this.name = name;
+    }
 
-        pattern = Pattern.compile("^[A-Za-z]{2,}$");
-        matcher = pattern.matcher(name);
+    public void setAadharNo(String aadharNo,Scanner scanner) {
+        Pattern pattern = Pattern.compile("[0-9]{12}");
+        Matcher matcher = pattern.matcher(aadharNo)  ;
 
-        if(matcher.matches())
+        while (!matcher.matches())
         {
-            this.name = name;
-        }
-        else {
-            System.out.println("Enter valid name");
+            System.out.println("please enter valid Aadhar Number [Enter 12 Digits] ");
+            aadharNo = scanner.next();
+            matcher = pattern.matcher(aadharNo);
         }
 
+         this.aadharNo = aadharNo;
     }
 
+    public void setMobileNo(String mobileNo,Scanner scanner ) {
 
+        Pattern pattern = Pattern.compile("[0-9]{10}");
+        Matcher matcher = pattern.matcher(mobileNo)  ;
 
-    public String getAadharNo() {
-        return aadharNo;
-    }
-
-    public void setAadharNo(String aadharNo) {
-
-        pattern = Pattern.compile("^[0-9]{12}$");
-        matcher = pattern.matcher(aadharNo);
-
-        if(matcher.matches())
+        while (!matcher.matches())
         {
-            this.aadharNo = aadharNo;
-        }
-        else {
-            System.out.println("Enter valid Aadhar Number");
+            System.out.println("please enter valid Mobile Number [Enter 10 Digits] ");
+            mobileNo = scanner.next();
+            matcher = pattern.matcher(mobileNo);
         }
 
+        this.mobileNo = mobileNo;
     }
 
-    public String getMobileNo() {
-        return mobileNo;
-    }
+    public void setAge(String age ,Scanner scanner) {
 
-    public void setMobileNo(String mobileNo) {
+        Pattern pattern = Pattern.compile("[0-9]{2}");
+        Matcher matcher = pattern.matcher(age)  ;
 
-        pattern = Pattern.compile("^[0-9]{10}$");
-        matcher = pattern.matcher(mobileNo);
-
-        if(matcher.matches())
+        while (!matcher.matches())
         {
-            this.mobileNo = mobileNo;
-        }
-        else{
-            System.out.println("Enter valid Mobile Number ");
-        }
-
-    }
-
-    public String getAge() {
-        return age;
-    }
-
-    public void setAge(String age)
-    {
-        pattern = Pattern.compile("^[0-9]{2}$");
-        matcher = pattern.matcher(age);
-
-        if(matcher.matches())
-        {
-            this.age = age ;
-        }
-        else{
-            System.out.println("Enter valid Age ");
+            System.out.println("please enter valid age");
+            age = scanner.next();
+            matcher = pattern.matcher(age);
         }
 
-    }
-
-    public String getAddress() {
-        return address;
+        this.age = age;
     }
 
     public void setAddress(String address) {
         this.address = address;
     }
 
-    public String getCity() {
-        return city;
-    }
-
     public void setCity(String city) {
-
-        pattern = Pattern.compile("^[A-Za-z]{4,}$");
-        matcher = pattern.matcher(city);
-
-        if(matcher.matches())
-        {
-            this.city = city ;
-        }
-        else {
-            System.out.println("Enter Valid City Name Minimum 4 Character");
-        }
-    }
-
-    public String getState() {
-        return state;
+        this.city = city;
     }
 
     public void setState(String state) {
+        this.state = state;
+    }
 
+    public void setEmail(String email ,Scanner scanner) {
+        Pattern pattern =  Pattern.compile( "^[a-zA-Z0-9_]+@" +  "[a-zA-Z0-9-]+" + "\\." + "[a-z" + "]{2,3}$");
+        Matcher matcher =  pattern.matcher(email);
 
-        pattern = Pattern.compile("^[A-Za-z]{3,}$");
-        matcher = pattern.matcher(city);
-
-        if(matcher.matches())
+        while (!matcher.matches())
         {
-            this.state = state;
+            System.out.println("please enter valid email .[Enter in lowercase] ");
+            email = scanner.next();
+            matcher = pattern.matcher(email);
         }
-        else {
-            System.out.println("Enter Valid State");
-        }
-    }
-
-    public String getEmail() {
-
-
-        return email;
-    }
-
-    public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getAccountNumber() {
-        return accountNumber;
     }
 
     public void setAccountNumber(String accountNumber) {
         this.accountNumber = accountNumber;
     }
 
+    public void setBalance(String balance) {
+
+        Pattern pattern =  Pattern.compile("^[0-9]{3,}$");
+        Matcher matcher =  pattern.matcher(balance);
+
+        while (!matcher.matches())
+        {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Enter amount above 100 Rs.");
+            balance = scanner.next();
+            matcher = pattern.matcher(balance);
+        }
+
+        this.balance = balance;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getAadharNo() {
+        return aadharNo;
+    }
+
+    public String getMobileNo() {
+        return mobileNo;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+
     public String getBalance() {
         return balance;
     }
-
-    public void setBalance(String balance) {
-
-        pattern = Pattern.compile("^[0-9]{1,}$");
-        matcher = pattern.matcher(balance);
-
-        if(matcher.matches())
-        {
-            this.balance = balance;
-        }
-        else {
-            System.out.println("Enter Valid State");
-        }
-
-
-    }
-
 
     @Override
     public String toString() {
