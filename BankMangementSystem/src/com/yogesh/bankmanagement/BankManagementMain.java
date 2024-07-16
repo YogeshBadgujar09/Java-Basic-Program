@@ -15,7 +15,7 @@ public class BankManagementMain {
 
         do {
             System.out.println("\n*** Welcome to Bank Management System ***");
-            System.out.println("\n1.Open Account 2.Close Account  3.Search Account 4.Cash Operation 5.View All Accounts 6.Update KYC");
+            System.out.println("\n1.Open Account 2.Close Account  3.Search Account 4.Cash Operation 5.View All Accounts 6.Update KYC 7.EXIT");
 
             System.out.println("\nEnter Your Choice :");
             choice = scanner.nextInt();
@@ -258,11 +258,11 @@ public class BankManagementMain {
     }
 
 
-    public static void main(String[] args) {
-
-        BankManagementMain bankManagementMain = new BankManagementMain();
-        bankManagementMain.operation();
-
-    }
+//    public static void main(String[] args) {
+//
+//        BankManagementMain bankManagementMain = new BankManagementMain();
+//        bankManagementMain.operation();
+//
+//    }
 
 }
