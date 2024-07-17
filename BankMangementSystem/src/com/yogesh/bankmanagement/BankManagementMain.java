@@ -1,9 +1,6 @@
 package com.yogesh.bankmanagement;
 
-import java.util.List;
-import java.util.Scanner ;
-import java.util.Random ;
-import java.util.ArrayList ;
+import java.util.*;
 
 public class BankManagementMain {
 
@@ -58,31 +55,8 @@ public class BankManagementMain {
         {
             System.out.println("--- Confirm Account ---" + newAccountInfoModel.toString() );
 
-            System.out.println("Enter Name :");
-            newAccountInfoModel.setName(newAccountInfoModel.validateInput(scanner.next(),scanner));
 
-            System.out.println("Enter aadhar number :");
-            newAccountInfoModel.setAadharNo(scanner.next(),scanner);
-
-            System.out.println("Enter Mobile Number :");
-            newAccountInfoModel.setMobileNo(scanner.next(),scanner);
-
-            System.out.println("Enter Your age :");
-            newAccountInfoModel.setAge(scanner.next(),scanner);
-
-            System.out.println("Enter address");
-            newAccountInfoModel.setAddress(newAccountInfoModel.validateInput(scanner.next(),scanner));
-
-            System.out.println("Enter City :");
-            newAccountInfoModel.setCity(newAccountInfoModel.validateInput(scanner.next(),scanner));
-
-            System.out.println("Enter State :");
-            newAccountInfoModel.setState(newAccountInfoModel.validateInput(scanner.next(),scanner));
-
-            System.out.println("Enter email :");
-            newAccountInfoModel.setEmail(scanner.next(),scanner);
-
-          }
+             }
     }
     public void cashOperation() {
         System.out.println("\n**** Cash Operation  ****");
@@ -189,8 +163,7 @@ public class BankManagementMain {
         return null ;
     }
 
-    public void openAccount() {
-
+    public NewAccountInfoModel accountInfoOptimizeCode() {
         NewAccountInfoModel newAccountInfoModel = new NewAccountInfoModel();
 
         System.out.println("Enter Name :");
@@ -216,6 +189,15 @@ public class BankManagementMain {
 
         System.out.println("Enter email :");
         newAccountInfoModel.setEmail(scanner.next(),scanner);
+
+        return  newAccountInfoModel;
+
+    }
+
+    public void openAccount() {
+
+
+        NewAccountInfoModel newAccountInfoModel = accountInfoOptimizeCode();
 
         System.out.println("Your Account Number is :  ");
         newAccountInfoModel.setAccountNumber(generateAccountNumber());
@@ -258,11 +240,11 @@ public class BankManagementMain {
     }
 
 
-//    public static void main(String[] args) {
-//
-//        BankManagementMain bankManagementMain = new BankManagementMain();
-//        bankManagementMain.operation();
-//
-//    }
+    public static void main(String[] args) {
+
+        BankManagementMain bankManagementMain = new BankManagementMain();
+        bankManagementMain.operation();
+
+    }
 
 }
