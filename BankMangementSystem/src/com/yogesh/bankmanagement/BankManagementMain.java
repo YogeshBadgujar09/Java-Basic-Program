@@ -55,8 +55,21 @@ public class BankManagementMain {
         {
             System.out.println("--- Confirm Account ---" + newAccountInfoModel.toString() );
 
+            String accountNumber = newAccountInfoModel.getAccountNumber() ;
+            String balance = newAccountInfoModel.getBalance();
 
-             }
+            multipleAccounts.remove(newAccountInfoModel);
+
+            newAccountInfoModel = accountInfoOptimizeCode() ;
+
+            System.out.println("Your Account Number is :  ");
+            newAccountInfoModel.setAccountNumber(accountNumber);
+            System.out.println(newAccountInfoModel.getAccountNumber());
+
+            newAccountInfoModel.setBalance(balance);
+
+            multipleAccounts.add(newAccountInfoModel);
+        }
     }
     public void cashOperation() {
         System.out.println("\n**** Cash Operation  ****");
@@ -141,9 +154,11 @@ public class BankManagementMain {
     }
 
     public NewAccountInfoModel findAccount() {
+
         System.out.println("Enter Account Number  : ");
         String accountNumber = scanner.next();
 
+       // NewAccountInfoModel newAccountInfoModel1 = null ;
         boolean flag = false ;
 
         if(multipleAccounts != null)
@@ -152,18 +167,23 @@ public class BankManagementMain {
             {
                 if(accountNumber.equals(newAccountInfoModel.getAccountNumber()))
                 {
+                    //newAccountInfoModel1 = newAccountInfoModel;
                     flag = true ;
+
                     return newAccountInfoModel ;
                 }
             }
         }
         if(!flag){
             System.out.println("Account is not available");
+
         }
+
         return null ;
     }
 
     public NewAccountInfoModel accountInfoOptimizeCode() {
+
         NewAccountInfoModel newAccountInfoModel = new NewAccountInfoModel();
 
         System.out.println("Enter Name :");
@@ -191,7 +211,6 @@ public class BankManagementMain {
         newAccountInfoModel.setEmail(scanner.next(),scanner);
 
         return  newAccountInfoModel;
-
     }
 
     public void openAccount() {
