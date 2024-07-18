@@ -167,17 +167,6 @@ public class NewAccountInfoModel
 
     @Override
     public String toString() {
-        return "NewAccountInfoModel{" +
-                "name='" + name + '\'' +
-                ", aadharNo='" + aadharNo + '\'' +
-                ", mobileNo='" + mobileNo + '\'' +
-                ", age='" + age + '\'' +
-                ", address='" + address + '\'' +
-                ", city='" + city + '\'' +
-                ", state='" + state + '\'' +
-                ", email='" + email + '\'' +
-                ", accountNumber='" + accountNumber + '\'' +
-                ", balance='" + balance + '\'' +
-                '}';
+        return STR."NewAccountInfoModel{name='\{name}\{'\''}, aadharNo='\{aadharNo}\{'\''}, mobileNo='\{mobileNo}\{'\''}, age='\{age}\{'\''}, address='\{address}\{'\''}, city='\{city}\{'\''}, state='\{state}\{'\''}, email='\{email}\{'\''}, accountNumber='\{accountNumber}\{'\''}, balance='\{balance}\{'\''}\{'}'}";
     }
 }
