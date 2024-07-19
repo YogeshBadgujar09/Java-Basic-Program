@@ -49,7 +49,8 @@ public class BankManagementMain {
 
 
     public void updateKYC() {
-        NewAccountInfoModel newAccountInfoModel = findAccount() ;
+        NewAccountInfoModel newAccountInfoModel;// = new NewAccountInfoModel();
+        newAccountInfoModel = findAccount() ;
 
         if(newAccountInfoModel != null )
         {
@@ -58,9 +59,9 @@ public class BankManagementMain {
             String accountNumber = newAccountInfoModel.getAccountNumber() ;
             String balance = newAccountInfoModel.getBalance();
 
-            multipleAccounts.remove(newAccountInfoModel);
+          //  multipleAccounts.remove(newAccountInfoModel);
 
-            newAccountInfoModel = accountInfoOptimizeCode() ;
+            accountInfoOptimizeCode(newAccountInfoModel) ;
 
             System.out.println("Your Account Number is :  ");
             newAccountInfoModel.setAccountNumber(accountNumber);
@@ -68,7 +69,8 @@ public class BankManagementMain {
 
             newAccountInfoModel.setBalance(balance);
 
-            multipleAccounts.add(newAccountInfoModel);
+            // multipleAccounts.add(newAccountInfoModel);
+
         }
     }
     public void cashOperation() {
@@ -182,9 +184,9 @@ public class BankManagementMain {
         return null ;
     }
 
-    public NewAccountInfoModel accountInfoOptimizeCode() {
+    public void accountInfoOptimizeCode(NewAccountInfoModel newAccountInfoModel) {
 
-        NewAccountInfoModel newAccountInfoModel = new NewAccountInfoModel();
+        //NewAccountInfoModel newAccountInfoModel = new NewAccountInfoModel();
 
         System.out.println("Enter Name :");
         newAccountInfoModel.setName(newAccountInfoModel.validateInput(scanner.next(),scanner));
@@ -210,13 +212,14 @@ public class BankManagementMain {
         System.out.println("Enter email :");
         newAccountInfoModel.setEmail(scanner.next(),scanner);
 
-        return  newAccountInfoModel;
+        //return  newAccountInfoModel;
     }
 
     public void openAccount() {
 
 
-        NewAccountInfoModel newAccountInfoModel = accountInfoOptimizeCode();
+        NewAccountInfoModel newAccountInfoModel = new NewAccountInfoModel();
+        1uuaccountInfoOptimizeCode(newAccountInfoModel);
 
         System.out.println("Your Account Number is :  ");
         newAccountInfoModel.setAccountNumber(generateAccountNumber());
