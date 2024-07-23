@@ -183,7 +183,6 @@ public class Account {
 
     public void accountInfoOptimizeCode(AccountModel accountModel) {
 
-
         System.out.println("Enter Name :");
         accountModel.setName(accountModel.validateInput(scanner.next(),scanner));
 

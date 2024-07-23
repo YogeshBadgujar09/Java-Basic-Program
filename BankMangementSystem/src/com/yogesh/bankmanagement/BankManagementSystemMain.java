@@ -2,6 +2,7 @@ package com.yogesh.bankmanagement;
 import java.util.Random ;
 import java.util.HashMap ;
 import java.util.Map ;
+
 import java.util.Scanner ;
 
 public class BankManagementSystemMain {
@@ -50,13 +51,29 @@ public class BankManagementSystemMain {
         }
     }
 
-    public void findAccount()
-    {
-      for(String key : accountsTypeList.keySet())
-      {
+    public void findAccount() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter Account to find :");
+        String accountNumber = scanner.next();
+
+        for(String accountTypeName : accountsTypeList.keySet()) {
+
+            System.out.println("Account Type :" + accountTypeName);
+            Account account = accountsTypeList.get(accountTypeName);
+
+            for(int i=0 ; i<account.accountsList.size(); i++)
+            {
+                AccountModel accountModel  = account.accountsList.get(i);
+
+                if (accountNumber.equals(accountModel.getAccountNumber()))
+                {
+                    System.out.println("*** Account Information  ***\n" + accountModel.toString());
+                }
+
+            }
           
-          
-      }
+        }
 
 
 
