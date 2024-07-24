@@ -155,6 +155,11 @@ public class Account {
 
     }
 
+    public void removeAccount(AccountModel accountModel)
+    {
+        accountsList.remove(accountModel);
+    }
+
 //    public AccountModel findAccount() {
 //
 //        System.out.println("Enter Account Number  : ");
@@ -247,21 +252,7 @@ public class Account {
 //
 //    }
 //
-//    public void closeAccount() {
-//
-//        AccountModel newAccountInfoModel = findAccount();
-//        if(newAccountInfoModel != null ) {
-//             accountsList.remove(newAccountInfoModel) ;
-//        }
-//
-//    }
 
 
-//    public static void main(String[] args) {
-//
-//        BankManagementMain bankManagementMain = new BankManagementMain();
-//        bankManagementMain.operation();
-//
-//    }
 
 }

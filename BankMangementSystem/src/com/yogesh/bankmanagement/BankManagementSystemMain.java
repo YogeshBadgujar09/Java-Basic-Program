@@ -27,7 +27,7 @@ public class BankManagementSystemMain {
                 break;
 
                 case  2 :
-                    findAccount();
+                    searchAccount();
                 break;
 
                 case 3 :
@@ -82,35 +82,44 @@ public class BankManagementSystemMain {
         }
     }
 
-    public void closeAccount() {
+    public AccountModel findAccountOptimizeCode(){
 
         if(!accountsTypeList.isEmpty()) {
 
-            System.out.println("Enter Account Number to Close Account :");
+            System.out.println("Enter Account Number :");
             String accountNumber = scanner.next();
 
             for(String accountTypeName : accountsTypeList.keySet()) {
 
                 Account account = accountsTypeList.get(accountTypeName);
 
-                boolean flag = false ;
+              //  boolean flag = false ;
                 for(int i=0 ; i<account.accountsList.size(); i++) {
 
                     AccountModel accountModel  = account.accountsList.get(i);
                     if (accountNumber.equals(accountModel.getAccountNumber())) {
-                        flag = true ;
+                //        flag = true ;
                         System.out.println("Account Type :" + accountTypeName);
                         System.out.println("*** Confirm Account ***\n" + accountModel.toString());
-                        account.accountsList.remove(accountModel);
+                        return accountModel;
                     }
-                }
-                if(!flag) {
-                    System.out.println("No any Account Available !!!");
                 }
             }
         }
+        else {
+            System.out.println("No any Account Available !!!");
+        }
+        return null  ;
     }
-    public void findAccount() {
+
+    public void closeAccount() {
+        AccountModel accountModel  = findAccountOptimizeCode()  ;
+        if(accountModel != null) {
+            new Account().removeAccount(accountModel);
+            System.out.println("Account Close Successfully");
+        }
+    }
+    public void searchAccount() {
 
         if(!accountsTypeList.isEmpty())
         {
