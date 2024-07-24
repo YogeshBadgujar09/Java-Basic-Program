@@ -8,14 +8,45 @@ import java.util.Scanner ;
 public class BankManagementSystemMain {
 
     Map<String, Account> accountsTypeList = new HashMap<>();
-    public  void openAccount()
-    {
+    Scanner scanner = new Scanner(System.in);
+    public void operation() {
+        System.out.println("****  WelCome to Bank Management System ****");
+
+        int choice;
+
+        do {
+
+            System.out.println("\n1.Open Account \n2.Find Account \n3.Close Account");
+            System.out.println("Enter Your Choice :");
+            choice = scanner.nextInt();
+
+            switch (choice)
+            {
+                case 1 :
+                    openAccount();
+                break;
+
+                case  2 :
+                    findAccount();
+                break;
+
+                case 3 :
+                    closeAccount();
+                break;
+            }
+
+
+        }
+        while (choice < 4);
+
+    }
+
+    public  void openAccount() {
         Random random = new Random();
 
         Account account = new Account();
 
         int choice ;
-
 
         System.out.println("**** Select Bank Account Type **** \n1.Saving AC \n2.Current Account \n3.Fixed Deposit AC \n4.Salary AC \n5.EXIT");
 
@@ -51,39 +82,68 @@ public class BankManagementSystemMain {
         }
     }
 
-    public void findAccount() {
-        Scanner scanner = new Scanner(System.in);
+    public void closeAccount() {
 
-        System.out.println("Enter Account to find :");
-        String accountNumber = scanner.next();
+        if(!accountsTypeList.isEmpty()) {
 
-        for(String accountTypeName : accountsTypeList.keySet()) {
+            System.out.println("Enter Account Number to Close Account :");
+            String accountNumber = scanner.next();
 
-            System.out.println("Account Type :" + accountTypeName);
-            Account account = accountsTypeList.get(accountTypeName);
+            for(String accountTypeName : accountsTypeList.keySet()) {
 
-            for(int i=0 ; i<account.accountsList.size(); i++)
-            {
-                AccountModel accountModel  = account.accountsList.get(i);
+                Account account = accountsTypeList.get(accountTypeName);
 
-                if (accountNumber.equals(accountModel.getAccountNumber()))
-                {
-                    System.out.println("*** Account Information  ***\n" + accountModel.toString());
+                boolean flag = false ;
+                for(int i=0 ; i<account.accountsList.size(); i++) {
+
+                    AccountModel accountModel  = account.accountsList.get(i);
+                    if (accountNumber.equals(accountModel.getAccountNumber())) {
+                        flag = true ;
+                        System.out.println("Account Type :" + accountTypeName);
+                        System.out.println("*** Confirm Account ***\n" + accountModel.toString());
+                        account.accountsList.remove(accountModel);
+                    }
                 }
-
+                if(!flag) {
+                    System.out.println("No any Account Available !!!");
+                }
             }
-          
         }
+    }
+    public void findAccount() {
+
+        if(!accountsTypeList.isEmpty())
+        {
+            System.out.println("Enter Account Number to find :");
+            String accountNumber = scanner.next();
+
+            for(String accountTypeName : accountsTypeList.keySet()) {
 
 
+                Account account = accountsTypeList.get(accountTypeName);
 
+                boolean flag = false ;
+
+                for(int i=0 ; i<account.accountsList.size(); i++) {
+
+                    AccountModel accountModel  = account.accountsList.get(i);
+                    if (accountNumber.equals(accountModel.getAccountNumber())) {
+                        flag = true ;
+                        System.out.println("Account Type :" + accountTypeName);
+                        System.out.println("*** Account Information  ***\n" + accountModel.toString());
+                    }
+                }
+                if(!flag) {
+                    System.out.println("No any Account Available !!!");
+                }
+            }
+        }
     }
 
     public static void main(String[] args) {
 
     BankManagementSystemMain bankManagementSystemMain = new BankManagementSystemMain();
-    bankManagementSystemMain.openAccount();
-
+    bankManagementSystemMain.operation();
 
     }
 }
