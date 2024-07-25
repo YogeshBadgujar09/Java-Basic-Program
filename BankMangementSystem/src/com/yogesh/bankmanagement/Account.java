@@ -155,10 +155,6 @@ public class Account {
 
     }
 
-    public void removeAccount(AccountModel accountModel)
-    {
-        accountsList.remove(accountModel);
-    }
 
 //    public AccountModel findAccount() {
 //
