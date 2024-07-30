@@ -34,8 +34,6 @@ public class BankManagementSystemMain {
                     closeAccount();
                 break;
             }
-
-
         }
         while (choice < 4);
 
@@ -82,7 +80,8 @@ public class BankManagementSystemMain {
         }
     }
 
-    public Account searchAccount(){
+
+       public void searchAccount() {
 
         if(!accountsTypeList.isEmpty()) {
 
@@ -96,12 +95,12 @@ public class BankManagementSystemMain {
                 boolean flag = false ;
                 for(int i=0 ; i<account.accountsList.size(); i++) {
 
-                    AccountModel accountModel  = account.accountsList.get(i);
+                    AccountModel accountModel = account.accountsList.get(i);
                     if (accountNumber.equals(accountModel.getAccountNumber())) {
-                        flag = true ;
+                         flag = true ;
                         System.out.println("Account Type :" + accountTypeName);
-                        System.out.println("*** Confirm Account ***\n" + accountModel.toString());
-                        return account ;
+                        System.out.println(STR."*** Confirm Account ***\n\{accountModel.toString()}");
+
                     }
                 }
                 if(!flag) {
@@ -109,11 +108,10 @@ public class BankManagementSystemMain {
                 }
             }
         }
-        else {
-            System.out.println("No any Account Available !!!");
-        }
-        return null  ;
+        else
+        System.out.println("No any Account Available !!!");
     }
+
 
     public void closeAccount() {
 
@@ -133,9 +131,14 @@ public class BankManagementSystemMain {
                     if (accountNumber.equals(accountModel.getAccountNumber())) {
                         flag = true ;
                         System.out.println("Account Type :" + accountTypeName);
-                        System.out.println("*** Confirm Account ***\n" + accountModel.toString());
-                        account.accountsList.remove(accountModel);
-                        System.out.println("Account Close Successfully");
+                        System.out.println(STR."*** Confirm Account ***\n\{accountModel.toString()}");
+
+                        System.out.println("Are you sure to close account ? [ y / n]");
+                        String choice = scanner.next();
+                        if(choice.charAt(0) == 'y') {
+                            System.out.println("Account close Successfully");
+                            account.accountsList.remove(accountModel);
+                        }
                     }
                 }
                 if(!flag) {
@@ -143,12 +146,11 @@ public class BankManagementSystemMain {
                 }
             }
         }
-        else {
+        else
             System.out.println("No any Account Available !!!");
-        }
+
+
     }
-
-
 
     public static void main(String[] args) {
 
