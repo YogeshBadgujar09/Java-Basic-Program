@@ -207,12 +207,9 @@ public class Account {
 
         System.out.println("Enter email :");
         accountModel.setEmail(scanner.next(),scanner);
-
-        //return  accountModel;
     }
 
     public void enterAccountHolderInfo() {
-
 
         AccountModel accountModel = new AccountModel();
         accountInfoOptimizeCode(accountModel);

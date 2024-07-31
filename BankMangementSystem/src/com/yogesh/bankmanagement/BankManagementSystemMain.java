@@ -16,7 +16,7 @@ public class BankManagementSystemMain {
 
         do {
 
-            System.out.println("\n1.Open Account \n2.Search Account \n3.Close Account");
+            System.out.println("\n1.Open Account \n2.Search Account \n3.Update KYC \n4.Close Account");
             System.out.println("Enter Your Choice :");
             mainOperation = scanner.nextInt();
 
@@ -30,12 +30,17 @@ public class BankManagementSystemMain {
                     searchAccount();
                 break;
 
-                case 3 :
+                case  3 :
+                    //Work for Update KYC
+                    searchAccount();
+                    break;
+                case 4:
+                    //Work for Close Account
                      searchAccount();  //This funtion first check account is exist and then close account
                 break;
             }
         }
-        while (mainOperation < 4);
+        while (mainOperation < 5);
 
     }
 
@@ -105,10 +110,16 @@ public class BankManagementSystemMain {
                            System.out.println("Account Type :" + accountTypeName);
                            System.out.println(STR."*** Confirm Account ***\n\{accountModel.toString()}");
 
-                           final int CLOSE_ACCOUNT = 3 ;
+                           final int CLOSE_ACCOUNT = 4 ;
+                           final int UPDATE_KYC = 3 ;
                            if(mainOperation == CLOSE_ACCOUNT ) {
                                closeAccount(account , accountModel);
                            }
+                           if (mainOperation == UPDATE_KYC){
+                               updateKYC(account,accountModel);
+                           }
+
+
                        }
                    }
                }
@@ -118,6 +129,22 @@ public class BankManagementSystemMain {
            }
     }
 
+    public void updateKYC(Account account , AccountModel accountModel)
+    {
+        String accountNumber = accountModel.getAccountNumber();
+        String balance = accountModel.getBalance();
+
+        account.accountInfoOptimizeCode(accountModel);
+
+        System.out.println("Your Account Number is :");
+        accountModel.setAccountNumber(accountNumber);
+        System.out.println(accountModel.getAccountNumber());
+
+        System.out.println("Your Available Balance :");
+        accountModel.setAccountNumber(balance);
+        System.out.println(accountModel.getBalance());
+
+    }
     public void closeAccount(Account account , AccountModel accountModel) {
         System.out.println("\nAre you sure to close account. [ y / n ]");
         String confirm = scanner.next();
