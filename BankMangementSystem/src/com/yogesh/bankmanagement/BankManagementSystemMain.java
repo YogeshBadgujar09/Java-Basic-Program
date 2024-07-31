@@ -9,18 +9,18 @@ public class BankManagementSystemMain {
 
     Map<String, Account> accountsTypeList = new HashMap<>();
     Scanner scanner = new Scanner(System.in);
+
+    int mainOperation;
     public void operation() {
         System.out.println("****  WelCome to Bank Management System ****");
-
-        int choice;
 
         do {
 
             System.out.println("\n1.Open Account \n2.Search Account \n3.Close Account");
             System.out.println("Enter Your Choice :");
-            choice = scanner.nextInt();
+            mainOperation = scanner.nextInt();
 
-            switch (choice)
+            switch (mainOperation)
             {
                 case 1 :
                     openAccount();
@@ -31,11 +31,11 @@ public class BankManagementSystemMain {
                 break;
 
                 case 3 :
-                    closeAccount();
+                     searchAccount();  //This funtion first check account is exist and then close account
                 break;
             }
         }
-        while (choice < 4);
+        while (mainOperation < 4);
 
     }
 
@@ -81,75 +81,50 @@ public class BankManagementSystemMain {
     }
 
 
+    /**
+     * This function is create for code optimization purpose.
+     * It will check current Account is available or not.
+     *and work on other operation like Serarch Account , Close Account and Other operation
+     */
        public void searchAccount() {
 
-        if(!accountsTypeList.isEmpty()) {
+           boolean flag = false ;
+           if(!accountsTypeList.isEmpty()) {
 
-            System.out.println("Enter Account Number :");
-            String accountNumber = scanner.next();
+               System.out.println("Enter Account Number :");
+               String accountNumber = scanner.next();
 
-            for(String accountTypeName : accountsTypeList.keySet()) {
+               for(String accountTypeName : accountsTypeList.keySet()) {
 
-                Account account = accountsTypeList.get(accountTypeName);
+                   Account account = accountsTypeList.get(accountTypeName);
+                   for(int i=0 ; i<account.accountsList.size(); i++) {
 
-                boolean flag = false ;
-                for(int i=0 ; i<account.accountsList.size(); i++) {
+                       AccountModel accountModel = account.accountsList.get(i);
+                       if (accountNumber.equals(accountModel.getAccountNumber())) {
+                           flag = true ;
+                           System.out.println("Account Type :" + accountTypeName);
+                           System.out.println(STR."*** Confirm Account ***\n\{accountModel.toString()}");
 
-                    AccountModel accountModel = account.accountsList.get(i);
-                    if (accountNumber.equals(accountModel.getAccountNumber())) {
-                         flag = true ;
-                        System.out.println("Account Type :" + accountTypeName);
-                        System.out.println(STR."*** Confirm Account ***\n\{accountModel.toString()}");
-
-                    }
-                }
-                if(!flag) {
-                    System.out.println("No any Account Available !!!");
-                }
-            }
-        }
-        else
-        System.out.println("No any Account Available !!!");
+                           final int CLOSE_ACCOUNT = 3 ;
+                           if(mainOperation == CLOSE_ACCOUNT ) {
+                               closeAccount(account , accountModel);
+                           }
+                       }
+                   }
+               }
+           }
+           if(!flag) {
+               System.out.println("No any Account Available !!!");
+           }
     }
 
-
-    public void closeAccount() {
-
-        if(!accountsTypeList.isEmpty()) {
-
-            System.out.println("Enter Account Number :");
-            String accountNumber = scanner.next();
-
-            for(String accountTypeName : accountsTypeList.keySet()) {
-
-                Account account = accountsTypeList.get(accountTypeName);
-
-                boolean flag = false ;
-                for(int i=0 ; i<account.accountsList.size(); i++) {
-
-                    AccountModel accountModel = account.accountsList.get(i);
-                    if (accountNumber.equals(accountModel.getAccountNumber())) {
-                        flag = true ;
-                        System.out.println("Account Type :" + accountTypeName);
-                        System.out.println(STR."*** Confirm Account ***\n\{accountModel.toString()}");
-
-                        System.out.println("Are you sure to close account ? [ y / n]");
-                        String choice = scanner.next();
-                        if(choice.charAt(0) == 'y') {
-                            System.out.println("Account close Successfully");
-                            account.accountsList.remove(accountModel);
-                        }
-                    }
-                }
-                if(!flag) {
-                    System.out.println("No any Account Available !!!");
-                }
-            }
+    public void closeAccount(Account account , AccountModel accountModel) {
+        System.out.println("\nAre you sure to close account. [ y / n ]");
+        String confirm = scanner.next();
+        if(confirm.charAt(0) == 'y' || confirm.charAt(0) == 'Y'){
+            System.out.println("Account Close Successfully");
+            account.accountsList.remove(accountModel);
         }
-        else
-            System.out.println("No any Account Available !!!");
-
-
     }
 
     public static void main(String[] args) {
