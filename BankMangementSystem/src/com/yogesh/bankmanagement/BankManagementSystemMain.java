@@ -13,7 +13,7 @@ public class BankManagementSystemMain {
         System.out.println("****  WelCome to Bank Management System ****");
 
         do {
-            System.out.println("\n1.Open Account \n2.Search Account \n3.Update KYC \n4.Close Account");
+            System.out.println("\n1.Open Account \n2.Search Account \n3.Cash Operation \n4.Update KYC \n5.Close Account");
             System.out.println("Enter Your Choice :");
             mainOperation = scanner.nextInt();
 
@@ -27,16 +27,21 @@ public class BankManagementSystemMain {
                     searchAccount();
                 break;
 
-                case  3 :
+                case 3:
+                    //Use for cash Operation
+                    searchAccount();
+                    break;
+
+                case  4 :
                     //Work for Update KYC
                     searchAccount();
                     break;
-                case 4:
+                case 5:
                     //Work for Close Account
                      searchAccount();  //This funtion first check account is exist and then close account
                 break;
             }
-        } while (mainOperation < 5);
+        } while (mainOperation < 6);
     }
     public  void openAccount() {
         Random random = new Random();
@@ -78,13 +83,12 @@ public class BankManagementSystemMain {
                 break;
         }
     }
-
     /**
      * This function is create for code optimization purpose.
      * It will check current Account is available or not.
      *and work on other operation like Serarch Account , Close Account and Other operation
      */
-       public AccountModel searchAccount() {
+    public void searchAccount() {
 
            boolean flag = false ;
            if(!accountsTypeList.isEmpty()) {
@@ -102,13 +106,17 @@ public class BankManagementSystemMain {
                            flag = true ;
                            System.out.println("Account Type :" + accountTypeName + "\n" +STR."*** Confirm Account ***\n\{accountModel.toString()}");
 
-                           final int CLOSE_ACCOUNT = 4 ;
-                           final int UPDATE_KYC = 3 ;
+                           final int CLOSE_ACCOUNT = 5 ;
+                           final int UPDATE_KYC = 4 ;
+                           final int CASH_OPERATION = 3 ;
                            if(mainOperation == CLOSE_ACCOUNT ) {
                                closeAccount(account , accountModel);
                            }
                            if (mainOperation == UPDATE_KYC){
                                updateKYC(account,accountModel);
+                           }
+                           if (mainOperation == CASH_OPERATION){
+                               cashOperation(accountModel);
                            }
                        }
                    }
@@ -117,8 +125,60 @@ public class BankManagementSystemMain {
            if(!flag) {
                System.out.println("No any Account Available !!!");
            }
-           return null ;
     }
+
+    public void cashOperation(AccountModel accountModel)
+    {
+
+        System.out.println("\n1.Deposit Cash 2.Withdraw Cash ");
+
+            System.out.println("Enter Your Choice for Cash Operation :");
+            int choice = scanner.nextInt();
+
+            String balance = accountModel.balance;
+
+            String amount ;
+
+            switch (choice)
+            {
+                case 1 :
+                    amount = enterAmount() ;
+                    balance = String.valueOf(Long.parseLong(balance) + Long.parseLong(amount));
+                break;
+
+                case 2 :
+                    final int MINIMUM_BALANCE = 1000  ;
+                    amount = enterAmount() ;
+
+                    String balanceValidation =  String.valueOf(Long.parseLong(balance) - Long.parseLong(amount) );
+                    if(Long.parseLong(amount) < Long.parseLong(balance) && Long.parseLong(balanceValidation) >=  MINIMUM_BALANCE)
+                    {
+                        balance = balanceValidation ;
+                    }
+                    else{
+                        System.out.println("Your balance is " + balance + " So enter valid amount." );
+
+                        if(Long.parseLong(balanceValidation) <  MINIMUM_BALANCE)
+                           System.out.println("Keep " + MINIMUM_BALANCE + " Minimum amount in Account");
+                    }
+                break ;
+            }
+            accountModel.setBalance(balance);
+        }
+
+
+    /**
+     * This function is create for Take an amount from user.
+     * Use for code optimization
+     * @return amount for code optimization
+     */
+    public String enterAmount() {
+        System.out.println("Enter a amount for Operation  :");
+        String amount = scanner.next();
+
+        return amount ;
+    }
+        
 
     public void updateKYC(Account account , AccountModel accountModel) {
         account.accountInfoOptimizeCode(accountModel);
