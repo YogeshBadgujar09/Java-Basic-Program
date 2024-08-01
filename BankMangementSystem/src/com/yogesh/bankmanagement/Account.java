@@ -59,7 +59,6 @@ public class Account {
 //            String accountNumber = newAccountInfoModel.getAccountNumber() ;
 //            String balance = newAccountInfoModel.getBalance();
 //
-//          //  multipleAccounts.remove(newAccountInfoModel);
 //
 //            accountInfoOptimizeCode(newAccountInfoModel) ;
 //
@@ -68,10 +67,7 @@ public class Account {
 //            System.out.println(newAccountInfoModel.getAccountNumber());
 //
 //            newAccountInfoModel.setBalance(balance);
-//
-//            // multipleAccounts.add(newAccountInfoModel);
-//
-//        }
+//            }
 //    }
 //    public void cashOperation() {
 //        System.out.println("\n**** Cash Operation  ****");
@@ -141,19 +137,15 @@ public class Account {
 
         Random random = new Random();
         String accountNoStrForm  ;
-
-        while(true)
-        {
+        while(true) {
             int accountNumber = random.nextInt();
              accountNoStrForm = String.valueOf(accountNumber);
 
-            if(accountNumber > 1 && accountNoStrForm.length() == 10)
-            {
+            if(accountNumber > 1 && accountNoStrForm.length() == 10) {
                 return  "0000" + accountNoStrForm  ;
             }
         }
-
-    }
+     }
 
 
 //    public AccountModel findAccount() {

@@ -6,16 +6,13 @@ import java.util.Map ;
 import java.util.Scanner ;
 
 public class BankManagementSystemMain {
-
     Map<String, Account> accountsTypeList = new HashMap<>();
     Scanner scanner = new Scanner(System.in);
-
-    int mainOperation;
+    private int mainOperation;
     public void operation() {
         System.out.println("****  WelCome to Bank Management System ****");
 
         do {
-
             System.out.println("\n1.Open Account \n2.Search Account \n3.Update KYC \n4.Close Account");
             System.out.println("Enter Your Choice :");
             mainOperation = scanner.nextInt();
@@ -39,11 +36,8 @@ public class BankManagementSystemMain {
                      searchAccount();  //This funtion first check account is exist and then close account
                 break;
             }
-        }
-        while (mainOperation < 5);
-
+        } while (mainOperation < 5);
     }
-
     public  void openAccount() {
         Random random = new Random();
 
@@ -85,13 +79,12 @@ public class BankManagementSystemMain {
         }
     }
 
-
     /**
      * This function is create for code optimization purpose.
      * It will check current Account is available or not.
      *and work on other operation like Serarch Account , Close Account and Other operation
      */
-       public void searchAccount() {
+       public AccountModel searchAccount() {
 
            boolean flag = false ;
            if(!accountsTypeList.isEmpty()) {
@@ -107,8 +100,7 @@ public class BankManagementSystemMain {
                        AccountModel accountModel = account.accountsList.get(i);
                        if (accountNumber.equals(accountModel.getAccountNumber())) {
                            flag = true ;
-                           System.out.println("Account Type :" + accountTypeName);
-                           System.out.println(STR."*** Confirm Account ***\n\{accountModel.toString()}");
+                           System.out.println("Account Type :" + accountTypeName + "\n" +STR."*** Confirm Account ***\n\{accountModel.toString()}");
 
                            final int CLOSE_ACCOUNT = 4 ;
                            final int UPDATE_KYC = 3 ;
@@ -118,8 +110,6 @@ public class BankManagementSystemMain {
                            if (mainOperation == UPDATE_KYC){
                                updateKYC(account,accountModel);
                            }
-
-
                        }
                    }
                }
@@ -127,24 +117,12 @@ public class BankManagementSystemMain {
            if(!flag) {
                System.out.println("No any Account Available !!!");
            }
+           return null ;
     }
 
-    public void updateKYC(Account account , AccountModel accountModel)
-    {
-        String accountNumber = accountModel.getAccountNumber();
-        String balance = accountModel.getBalance();
-
+    public void updateKYC(Account account , AccountModel accountModel) {
         account.accountInfoOptimizeCode(accountModel);
-
-        System.out.println("Your Account Number is :");
-        accountModel.setAccountNumber(accountNumber);
-        System.out.println(accountModel.getAccountNumber());
-
-        System.out.println("Your Available Balance :");
-        accountModel.setAccountNumber(balance);
-        System.out.println(accountModel.getBalance());
-
-    }
+   }
     public void closeAccount(Account account , AccountModel accountModel) {
         System.out.println("\nAre you sure to close account. [ y / n ]");
         String confirm = scanner.next();
