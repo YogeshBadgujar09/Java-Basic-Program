@@ -24,9 +24,11 @@ import java.util.*;
 
     public static void main(String[] args) {
 
-        StudentArray s[] = new StudentArray();
+        StudentArraySolution s[] = new StudentArraySolution[5];
 
         for(int i=0 ; i<5 ; i++){
+            StudentArraySolution ss = new StudentArraySolution();
+            s[i] = ss;
             s[i].getdata();
         }
 
