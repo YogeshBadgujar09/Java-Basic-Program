@@ -1,40 +1,42 @@
-0import java.sql.Driver;
+import java.sql.Driver;	
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Connection;
 import java.sql.Statement;
-
 class JDBCAllStepPractice7
 {
 	public static void main(String args[])
 	{
-		try
-		{
-			//Step 1 Register the Driver
-			Driver d = new oracle.jdbc.driver.OracleDriver();
-			DriverManager.registerDriver(d);
-			System.out.println("Driver Registered Succesfully!!");
 
-			//Step 2 Get Connection
-			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521","system","infogalaxy");
-			System.out.println("Connection Successfull... Connection ID="+con);
+		try{
+			// Step 1 : Register the Driver
 
-			//Step 3 Create Statement Object
-			Statement stmt = con.createStatement();
-			System.out.println("Statement Object Created...");
+			Driver driver = new oracle.jdbc.driver.OracleDriver();
+			DriverManager.registerDriver(driver);	
+			System.out.println("Driver Register Successfully ... !!!");
 
-			//Step 4 Execute the Query
-			//stmt.executeUpdate("create table stud(id number(3),name varchar2(10))");
-			stmt.executeUpdate("insert into stud values(1,'Nayan')");
-			System.out.println("Query Executed...");
+			// Step 2 : Connection with Database
+			Connection connection =	DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521","system","2345");
+			System.out.println("\nConnection Successful with Database ... !!!");	
+			System.out.println("Specific ID for particular Client : " + connection);
 
-			//Step 5 Close connection
-			con.close();
-			System.out.println("Connection is Closed...");
-		}
+			// Step 3 : Create Statement object 
+			Statement statement = connection.createStatement();
+			System.out.println("\nStatement Object Create Successfully which handle UGA");
+
+			// Step 4 : Execute Query
+			//statement.executeUpdate("create table imrd(id NUMBER, name VARCHAR2(20))");
+			System.out.println("Create table in Database ... !!!");
+			statement.executeUpdate("INSERT INTO imrd VALUES(1,'Yogesh')");
+			
+			// Step 5 : Connection Close
+			connection.close();
+			System.out.println("\nConnection Close ... !!!");
+		}	
 		catch(SQLException ex)
 		{
-			System.out.println("Error in Database Connection...");
+			System.out.println("Failed to connect with Database ... !!!");
 		}
+		
 	}
 }
