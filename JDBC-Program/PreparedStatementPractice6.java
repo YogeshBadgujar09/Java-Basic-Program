@@ -5,7 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.Scanner;
 
-class PreparedStatementPractice5
+class PreparedStatementPractice6
 {
 
 	public static void main(String args[])
