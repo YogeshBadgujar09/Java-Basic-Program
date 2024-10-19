@@ -5,7 +5,7 @@ import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.ResultSet;
 
-class RetriveDataResultSet
+class RetriveDataResultSetDemo1
 {
 	public static void main(String args[])
 	{
