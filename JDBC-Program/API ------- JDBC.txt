@@ -1,0 +1,49 @@
+				API -------> JDBC	
+			
+				Package ---> java.sql				ojdbc14.jar (Oracle)
+
+			3 Classes		8 Interfaces
+
+			1. Driver Manager	1. Driver		--> oracle.jdbc.driver.OracleDriver
+			2. Date			2. Connection
+			3. Types		3. Statement
+						4. PreparedStatement
+						5. CallableStatement
+						6. ResultSet
+						7. ResultSetMetaData
+						8. DatabaseMetaData
+
+Steps for JDBC Connection
+1. Register the Driver
+	- Creating Reference/Object of Driver interface	--> Driver (interface) --> Package (java.sql) --> Java
+	- static registerDriver(Driver d); ---> DriverManager
+2. Get Connection
+	- URL ------> Connection ,Localhost, Driver Type
+		--> jdbc:oracle:thin:@localhost:1521
+	- Port No
+	- Username	--> system
+	- Password	--> infogalaxy
+
+	- static Connection getConnection("URL","Username","Password"); --> DriverManager
+	
+3. Create Statement Object
+	- public Statement createStatement()	
+
+4. Execute the Query
+	- SQL Commands - DDL, DML, TCL
+		---> SELECT Query (Select)	--> Non-Select Query (Create, Insert, update, delete,....)
+			executeQuery()			executeUpdate()	
+
+5. Close the Connection
+
+
+
+
+
+
+
+
+
+
+
+
