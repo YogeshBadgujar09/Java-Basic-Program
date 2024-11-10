@@ -1,6 +1,7 @@
 package com.yogesh.assigment;
 
 import java.sql.Connection;
+
 import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -24,7 +25,7 @@ public class UpdateData {
 			
 			Statement statement = connection.createStatement();
 
-			PreparedStatement preparedStatement = connection.prepareStatement("insert into studinfo(name) values(?)");
+		//	PreparedStatement preparedStatement = connection.prepareStatement("");
 			
 			System.out.println("Enter id for update Name :");
 			int id = scanner.nextInt();
@@ -33,17 +34,15 @@ public class UpdateData {
 			
 			while(resultSet.next())
 			{
-				if(resultSet.getInt(1) == id)
-				{
-					System.out.println("Your old Data is " + resultSet.getInt(1) + " " + resultSet.getString(2));
-					String name ;
-					
-					System.out.println(" Enter a name for update :");
-					name = scanner.next();
-					
-					preparedStatement.setString(2, name);
-					preparedStatement.executeUpdate();
-				}
+				 System.out.println(resultSet.getInt(1) + " " + resultSet.getString(2) );	
+				 
+				 if(resultSet.getInt(1) == id )
+				 {
+					 System.out.println("Enter name for Update :");
+					 String updateName = scanner.next();
+					 
+					 statement.executeUpdate("Update studinfo set name = '" + updateName +"' where id = " + id +" " );
+				 }
 			}
 			
 			connection.close();
