@@ -22,46 +22,34 @@ public class CredentialFunctionality {
 
             Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521","system","2345");
 
-            Statement statement = connection.createStatement(
-                    ResultSet.TYPE_SCROLL_INSENSITIVE ,
-                    ResultSet.CONCUR_UPDATABLE
-            );
+            Statement statement = connection.createStatement();
 
             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO credential VALUES(?,?)");
 
-            ResultSet resultSet = statement.executeQuery("SELECT username FROM credential");
+            boolean flag = false;
 
-            boolean usernameStatus = false ;
-           // boolean findUsername = false;
+            do {
 
-            do{
                 System.out.print("UserName : ");
                 String userName = scanner.next();
 
                 System.out.print("Password : ");
                 String password = scanner.next();
 
-                while(resultSet.next())
-                {
-                    System.out.println("Data :" + resultSet.getString(1));
-                    if(resultSet.getString(1).equals(userName))
-                    {
-                        usernameStatus = true ;
-                        System.out.println("Username Available ...!");
-                        resultSet.absolute(1);
-                        break;
-                    }
+                ResultSet resultSetUsernameAlreadyAvl = statement.executeQuery("SELECT username FROM credential WHERE username = '"+ userName +"'");
 
+                if(resultSetUsernameAlreadyAvl.next()) {
+                    System.out.println("Username already exist , Please enter another Username .... !!! ");
+                }
+                else {
+                    System.out.println("Register User successfully ... !!!");
+                    preparedStatement.setString(1,userName);
+                    preparedStatement.setString(2,password);
+                    preparedStatement.execute();
+                    flag = true ;
                 }
 
-                if(!usernameStatus)
-                {
-                    System.out.println("Enter you username ... !");
-                    usernameStatus = true;
-                }
-
-            }
-            while(usernameStatus);
+            }while(!flag);
 
             connection.close();
 
