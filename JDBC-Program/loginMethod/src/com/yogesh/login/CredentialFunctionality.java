@@ -1,78 +1,56 @@
 package com.yogesh.login;
 
- import java.sql.*;
+ import java.sql.ResultSet;
+ import java.sql.SQLException;
 
  import java.util.Scanner;
 
 public class CredentialFunctionality {
 
+    Scanner scanner;
     CredentialFunctionality(){
-
-        signIn();
-
+        signUp();
     }
 
     public void signUp()  {
 
-        Scanner scanner = new Scanner(System.in);
-
-        try {
-            Driver driver = new oracle.jdbc.driver.OracleDriver();
-            DriverManager.registerDriver(driver);
-
-            Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521","system","2345");
-
-            Statement statement = connection.createStatement();
-
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO credential VALUES(?,?)");
+        scanner = new Scanner(System.in);
+        GlobalDB.createConnection();
 
             boolean flag = false;
 
             do {
-
                 System.out.print("UserName : ");
                 String userName = scanner.next();
 
                 System.out.print("Password : ");
                 String password = scanner.next();
 
-                ResultSet resultSetUsernameAlreadyAvl = statement.executeQuery("SELECT * FROM credential WHERE username = '"+ userName +"'");
+                ResultSet resultSetUsernameAlreadyAvl = GlobalDB.selectQuery("SELECT * FROM credential WHERE username = '"+ userName +"'");
 
-                if(resultSetUsernameAlreadyAvl.next()) {
-                    System.out.println("Username already exist , Please enter another Username .... !!! ");
-                }
-                else {
-                    System.out.println("Register User successfully ... !!!");
-                    preparedStatement.setString(1,userName);
-                    preparedStatement.setString(2,password);
-                    preparedStatement.execute();
-                    flag = true ;
+                try {
+                    if(resultSetUsernameAlreadyAvl.next()) {
+                        System.out.println("Username already exist , Please enter another Username .... !!! ");
+                    }
+                    else {
+                        System.out.println("Register User successfully ... !!!");
+                        flag = GlobalDB.dataStoreInTable(userName,password);
+                    }
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
                 }
 
             }while(!flag);
 
-            connection.close();
-
-        } catch (SQLException e) {
-            System.out.println("System Message :" + e.getMessage());
-            throw new RuntimeException(e);
-        }
-
+            GlobalDB.closeConnection();
     }
 
     public void signIn()
     {
-        Scanner scanner = new Scanner(System.in);
+        scanner = new Scanner(System.in);
+        GlobalDB.createConnection();
 
-        try {
-            Driver driver = new oracle.jdbc.driver.OracleDriver();
-            DriverManager.registerDriver(driver);
-
-            Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521","system","2345");
-
-            Statement statement = connection.createStatement();
-
-            boolean flag = false;
+        boolean flag = false;
 
             do {
 
@@ -82,36 +60,35 @@ public class CredentialFunctionality {
                 System.out.print("Password : ");
                 String password = scanner.next();
 
-                ResultSet resultSetUsernameAlreadyAvl = statement.executeQuery("SELECT * FROM credential WHERE username = '"+ userName +"'");
+                ResultSet resultSetUsernameAlreadyAvl = GlobalDB.selectQuery("SELECT * FROM credential WHERE username = '"+ userName +"'");
 
-                if(resultSetUsernameAlreadyAvl.next()) {
+                try {
+                    if(resultSetUsernameAlreadyAvl.next()) {
 
-                    if(resultSetUsernameAlreadyAvl.getString(1).equals(userName) && resultSetUsernameAlreadyAvl.getString(2).equals(password))
-                    {
-                        System.out.println("Welcome Back .... !!! ");
-                        flag = true ;
-                    } else if(resultSetUsernameAlreadyAvl.getString(1).equals(userName)){
-                        System.out.println("Please enter valid Password ... !!!");
+                        if(resultSetUsernameAlreadyAvl.getString(1).equals(userName) && resultSetUsernameAlreadyAvl.getString(2).equals(password))
+                        {
+                            System.out.println("Welcome Back .... !!! ");
+                            flag = true ;
+                        } else if(resultSetUsernameAlreadyAvl.getString(1).equals(userName)){
+                            System.out.println("Please enter valid Password ... !!!");
+                        }
+
                     }
-
-                }
-                else {
+                    else {
+                        System.out.println("Please enter valid Username OR Password .... !!! ");
+                    }
+                } catch (SQLException ex) {
                     System.out.println("Please enter valid Username OR Password .... !!! ");
+                    throw new RuntimeException(ex);
                 }
 
             }while(!flag);
 
-            connection.close();
-
-        } catch (SQLException e) {
-            System.out.println("System Message :" + e.getMessage());
-            throw new RuntimeException(e);
-        }
+            GlobalDB.closeConnection();
     }
 
 
     public static void main(String[] args) {
         CredentialFunctionality creadentialFunctionality = new CredentialFunctionality();
-
     }
 }
