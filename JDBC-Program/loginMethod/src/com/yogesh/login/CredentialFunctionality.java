@@ -9,7 +9,30 @@ public class CredentialFunctionality {
 
     Scanner scanner;
     CredentialFunctionality(){
-        signUp();
+
+        System.out.println("Welcome To XYZ Bank ... !!!");
+
+            scanner = new Scanner(System.in);
+
+            System.out.println("1.SignIn 2.SignUp");
+
+            System.out.println("Enter Your Choice :");
+            int choice = scanner.nextInt();
+
+            switch (choice)
+            {
+                case 1 :
+                    signIn();
+                    break;
+
+                case 2 :
+                    signUp();
+                    break;
+
+                default:
+                    System.out.println("Enter Valid Operation ");
+
+            }
     }
 
     public void signUp()  {
@@ -20,25 +43,54 @@ public class CredentialFunctionality {
             boolean flag = false;
 
             do {
-                System.out.print("UserName : ");
-                String userName = scanner.next();
 
-                System.out.print("Password : ");
-                String password = scanner.next();
+                
+                String finalConfirmPassword;
+                System.out.println("Enter First Name :");
+                String firstName = scanner.next();
 
-                ResultSet resultSetUsernameAlreadyAvl = GlobalDB.selectQuery("SELECT * FROM credential WHERE username = '"+ userName +"'");
+                System.out.println("Enter Last Name :");
+                String lastName = scanner.next();
 
-                try {
-                    if(resultSetUsernameAlreadyAvl.next()) {
-                        System.out.println("Username already exist , Please enter another Username .... !!! ");
+                System.out.println("Enter Mobile Number :");
+                String mobileNo = scanner.next();
+
+                String password = "garBagePassword"  ;
+                String confirmPassword  = null ;
+                do{
+                    System.out.print("Enter UserName : ");
+                    String userName = scanner.next();
+
+                    ResultSet resultSetUsernameAlreadyAvl = GlobalDB.selectQuery("SELECT * FROM credential WHERE username = '"+ userName +"'");
+
+                    try {
+                        if(resultSetUsernameAlreadyAvl.next()) {
+                            System.out.println("Username already exist , Please enter another Username .... !!! ");
+                        }
+                        else {
+
+                            System.out.print("Enter Password : ");
+                            password = scanner.next();
+
+                            System.out.print("Confirm Password :");
+                            confirmPassword = scanner.next();
+
+                            if(password.equals(confirmPassword))
+                            {
+                                flag = GlobalDB.dataStoreInTable(userName,password,firstName,lastName,mobileNo);
+                                System.out.println("Create account successfully ... !!!");
+                            }
+                            else {
+                                System.out.println("please match password and confirm password .... !!!");
+                            }
+
+                        }
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
                     }
-                    else {
-                        System.out.println("Register User successfully ... !!!");
-                        flag = GlobalDB.dataStoreInTable(userName,password);
-                    }
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
+             
+                }while(!password.equals(confirmPassword) && !flag);
+                
 
             }while(!flag);
 
