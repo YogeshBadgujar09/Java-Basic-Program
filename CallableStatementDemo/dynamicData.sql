@@ -1,0 +1,6 @@
+CREATE OR REPLACE PROCEDURE dynamicData(id IN NUMBER , sname IN VARCHAR2)
+IS
+BEGIN
+	INSERT INTO stud VALUES(id,sname);
+END dynamicData;
+/
