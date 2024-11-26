@@ -1,28 +1,18 @@
-import java.util.regex.Pattern ;
+
 import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-class EmailValidation
-{
+public class EmailValidation{
 
-    public static boolean validateEmail(String email)
-    {
-        String emailRegex = "^[a-zA-Z0-9_+&*-]+@" +  "[a-zA-Z0-9-]+" + "\\." + "[a-z" + "]{2,3}$";
-
-       Pattern pat = Pattern.compile(emailRegex);
-        if (email == null)
-            return false;
-        return pat.matcher(email).matches();
+    String emailId = "yogesh@gmail.com";
+   Pattern pattern = Pattern.compile( "^[a-zA-Z0-9_+&*-]+@" +  "[a-zA-Z0-9-]+" + "\\." + "[a-z" + "]{2,3}$");
+   Matcher matcher = pattern.matcher(emailId);
+   
+   if(matcher.matches())
+   {
+       System.out.println("Valid email");
+   }else{
+        System.out.println("Not valid email ");
     }
-
-    public static void main(String[] args)
-    {
-
-        String email = "test@example.com";
-        if (validateEmail(email)) {
-            System.out.println(email + " is a valid email address");
-        } else {
-            System.out.println(email + " is not a valid email address");
-        }
-    }
+ 
 }
-
