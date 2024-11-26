@@ -36,16 +36,15 @@ public class CredentialFunctionality {
     }
 
     public void signUp()  {
-
+        InputValidation inputValidation ;
         scanner = new Scanner(System.in);
         GlobalDB.createConnection();
 
             boolean flag = false;
 
             do {
+                inputValidation = new InputValidation();
 
-                
-                String finalConfirmPassword;
                 System.out.println("Enter First Name :");
                 String firstName = scanner.next();
 
@@ -53,9 +52,12 @@ public class CredentialFunctionality {
                 String lastName = scanner.next();
 
                 System.out.println("Enter Mobile Number :");
-                String mobileNo = scanner.next();
+                String mobileNo = inputValidation.mobileNoValidation(scanner.next(),scanner);
 
-                String password = "garBagePassword"  ;
+                System.out.println("Enter Email Id :");
+                String email = inputValidation.emailIdValidation(scanner.next(), scanner);
+
+                String password = "Password"  ;
                 String confirmPassword  = null ;
                 do{
                     System.out.print("Enter UserName : ");
@@ -77,7 +79,7 @@ public class CredentialFunctionality {
 
                             if(password.equals(confirmPassword))
                             {
-                                flag = GlobalDB.dataStoreInTable(userName,password,firstName,lastName,mobileNo);
+                                  flag = GlobalDB.dataStoreInTable(userName,password,firstName,lastName,mobileNo,email);
                                 System.out.println("Create account successfully ... !!!");
                             }
                             else {

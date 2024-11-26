@@ -21,7 +21,7 @@ public class GlobalDB {
             DriverManager.registerDriver(driver);
             connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521","system","2345");
             statement = connection.createStatement();
-            preparedStatement = connection.prepareStatement("INSERT INTO credential VALUES(?,?,?,?,?)");
+            preparedStatement = connection.prepareStatement("INSERT INTO credential VALUES(?,?,?,?,?,?)");
 
         } catch (SQLException e) {
             System.out.println("Problem to get Connection .... !!! ");
@@ -39,7 +39,7 @@ public class GlobalDB {
         }
     }
 
-    public static boolean dataStoreInTable(String userName , String password ,String firstname , String lastname, String mobileno)
+    public static boolean dataStoreInTable(String userName , String password ,String firstname , String lastname, String mobileno,String email)
     {
         try {
 
@@ -48,6 +48,7 @@ public class GlobalDB {
             preparedStatement.setString(3,firstname);
             preparedStatement.setString(4,lastname);
             preparedStatement.setString(5,mobileno);
+            preparedStatement.setString(6,email);
             preparedStatement.execute();
             return true ;
 
