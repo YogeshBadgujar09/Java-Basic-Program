@@ -4,7 +4,7 @@
  */
 package credentialprocess;
 
-import com.yogesh.frontend.VarificationPage;
+import com.yogesh.frontend.OpenningPage;
 /**
  *
  * @author Yogesh
@@ -15,7 +15,7 @@ public class CredentialProcess {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        VarificationPage vari = new VarificationPage();
+        
      
     }
     
