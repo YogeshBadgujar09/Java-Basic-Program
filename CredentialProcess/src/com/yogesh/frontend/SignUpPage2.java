@@ -29,11 +29,11 @@ public class SignUpPage2 extends javax.swing.JFrame {
         jplContact = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtMobileNo = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        txtEmail = new javax.swing.JTextField();
+        btnBackToFirstPage = new javax.swing.JButton();
+        btnNextToThirdPage = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -55,13 +55,23 @@ public class SignUpPage2 extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Email ID");
 
-        jButton1.setBackground(new java.awt.Color(204, 204, 204));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton1.setText("Back");
+        btnBackToFirstPage.setBackground(new java.awt.Color(204, 204, 204));
+        btnBackToFirstPage.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnBackToFirstPage.setText("Back");
+        btnBackToFirstPage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackToFirstPageActionPerformed(evt);
+            }
+        });
 
-        jButton2.setBackground(new java.awt.Color(204, 204, 204));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton2.setText("Next");
+        btnNextToThirdPage.setBackground(new java.awt.Color(204, 204, 204));
+        btnNextToThirdPage.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnNextToThirdPage.setText("Next");
+        btnNextToThirdPage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNextToThirdPageActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jplContactLayout = new javax.swing.GroupLayout(jplContact);
         jplContact.setLayout(jplContactLayout);
@@ -75,12 +85,12 @@ public class SignUpPage2 extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jplContactLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(jplContactLayout.createSequentialGroup()
-                            .addComponent(jButton1)
+                            .addComponent(btnBackToFirstPage)
                             .addGap(18, 18, 18)
-                            .addComponent(jButton2)
+                            .addComponent(btnNextToThirdPage)
                             .addGap(15, 15, 15))
-                        .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING)))
+                        .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+                        .addComponent(txtMobileNo, javax.swing.GroupLayout.Alignment.LEADING)))
                 .addContainerGap(76, Short.MAX_VALUE))
         );
         jplContactLayout.setVerticalGroup(
@@ -91,15 +101,15 @@ public class SignUpPage2 extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtMobileNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jplContactLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(btnBackToFirstPage)
+                    .addComponent(btnNextToThirdPage))
                 .addContainerGap(61, Short.MAX_VALUE))
         );
 
@@ -107,15 +117,25 @@ public class SignUpPage2 extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jplContact, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jplContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jplContact, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jplContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBackToFirstPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackToFirstPageActionPerformed
+        new SignUpPage1().setVisible(true);
+    }//GEN-LAST:event_btnBackToFirstPageActionPerformed
+
+    private void btnNextToThirdPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextToThirdPageActionPerformed
+        // TODO add your handling code here:
+        new SignUpPage3().setVisible(true);
+    }//GEN-LAST:event_btnNextToThirdPageActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,13 +173,13 @@ public class SignUpPage2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnBackToFirstPage;
+    private javax.swing.JButton btnNextToThirdPage;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JPanel jplContact;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtMobileNo;
     // End of variables declaration//GEN-END:variables
 }

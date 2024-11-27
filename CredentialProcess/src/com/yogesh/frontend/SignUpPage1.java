@@ -41,8 +41,8 @@ public class SignUpPage1 extends javax.swing.JFrame {
         txtFirstName = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtLastName = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnNextToSecondPage = new javax.swing.JButton();
+        btnBackToOpenningPage = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -128,11 +128,13 @@ public class SignUpPage1 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SignUp - Personal Information");
+        setIconImages(null);
         setResizable(false);
 
         jPanel3.setBackground(new java.awt.Color(102, 102, 102));
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel3.setPreferredSize(new java.awt.Dimension(410, 300));
+        jPanel3.setVerifyInputWhenFocusTarget(false);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -146,13 +148,23 @@ public class SignUpPage1 extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Last Name");
 
-        jButton1.setBackground(new java.awt.Color(204, 204, 204));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton1.setText("Next");
+        btnNextToSecondPage.setBackground(new java.awt.Color(204, 204, 204));
+        btnNextToSecondPage.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnNextToSecondPage.setText("Next");
+        btnNextToSecondPage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNextToSecondPageActionPerformed(evt);
+            }
+        });
 
-        jButton2.setBackground(new java.awt.Color(204, 204, 204));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton2.setText("Back");
+        btnBackToOpenningPage.setBackground(new java.awt.Color(204, 204, 204));
+        btnBackToOpenningPage.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnBackToOpenningPage.setText("Back");
+        btnBackToOpenningPage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackToOpenningPageActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -166,14 +178,14 @@ public class SignUpPage1 extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addComponent(jButton2)
+                            .addComponent(btnBackToOpenningPage)
                             .addGap(18, 18, 18)
-                            .addComponent(jButton1)
+                            .addComponent(btnNextToSecondPage)
                             .addGap(15, 15, 15))
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(txtLastName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                             .addComponent(txtFirstName, javax.swing.GroupLayout.Alignment.LEADING))))
-                .addGap(79, 79, 79))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,8 +202,8 @@ public class SignUpPage1 extends javax.swing.JFrame {
                 .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
+                    .addComponent(btnBackToOpenningPage)
+                    .addComponent(btnNextToSecondPage))
                 .addContainerGap(56, Short.MAX_VALUE))
         );
 
@@ -199,17 +211,24 @@ public class SignUpPage1 extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBackToOpenningPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackToOpenningPageActionPerformed
+         new OpenningPage().setVisible(true);
+    }//GEN-LAST:event_btnBackToOpenningPageActionPerformed
+
+    private void btnNextToSecondPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextToSecondPageActionPerformed
+        new SignUpPage2().setVisible(true);
+    }//GEN-LAST:event_btnNextToSecondPageActionPerformed
 
     /**
      * @param args the command line arguments
@@ -248,9 +267,9 @@ public class SignUpPage1 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnBackToOpenningPage;
+    private javax.swing.JButton btnNextToSecondPage;
     private javax.swing.JButton btnSubmit;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

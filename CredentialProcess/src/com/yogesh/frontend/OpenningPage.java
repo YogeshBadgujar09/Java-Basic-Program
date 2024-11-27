@@ -4,12 +4,14 @@
  */
 package com.yogesh.frontend;
 
+
 /**
  *
  * @author Yogesh
  */
 public class OpenningPage extends javax.swing.JFrame {
 
+    
     /**
      * Creates new form VarifivationPage
      */
@@ -26,74 +28,82 @@ public class OpenningPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jplOpenningPage = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        btnSignUp = new javax.swing.JButton();
         btnSignIn = new javax.swing.JButton();
+        btmSignUp = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Home Page");
         setLocation(new java.awt.Point(450, 250));
         setResizable(false);
 
-        jplOpenningPage.setBackground(new java.awt.Color(102, 102, 102));
-        jplOpenningPage.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jplOpenningPage.setPreferredSize(new java.awt.Dimension(410, 300));
+        jPanel1.setBackground(new java.awt.Color(102, 102, 102));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Bank Management System");
 
-        btnSignUp.setBackground(new java.awt.Color(204, 204, 204));
-        btnSignUp.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnSignUp.setText("Sign up");
-        btnSignUp.addActionListener(new java.awt.event.ActionListener() {
+        btnSignIn.setBackground(new java.awt.Color(204, 204, 204));
+        btnSignIn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnSignIn.setText("Sign In");
+        btnSignIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSignUpActionPerformed(evt);
+                btnSignInActionPerformed(evt);
             }
         });
 
-        btnSignIn.setBackground(new java.awt.Color(204, 204, 204));
-        btnSignIn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnSignIn.setText("Sign in");
-        btnSignIn.setMaximumSize(new java.awt.Dimension(37, 16));
-        btnSignIn.setMinimumSize(new java.awt.Dimension(37, 16));
+        btmSignUp.setBackground(new java.awt.Color(204, 204, 204));
+        btmSignUp.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btmSignUp.setText("Sign Up");
+        btmSignUp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btmSignUpActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jplOpenningPageLayout = new javax.swing.GroupLayout(jplOpenningPage);
-        jplOpenningPage.setLayout(jplOpenningPageLayout);
-        jplOpenningPageLayout.setHorizontalGroup(
-            jplOpenningPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jplOpenningPageLayout.createSequentialGroup()
-                .addContainerGap(90, Short.MAX_VALUE)
-                .addGroup(jplOpenningPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jplOpenningPageLayout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(79, 79, 79))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jplOpenningPageLayout.createSequentialGroup()
-                        .addComponent(btnSignUp)
-                        .addGap(51, 51, 51)
-                        .addComponent(btnSignIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(98, 98, 98))))
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(85, 85, 85)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(btnSignIn)
+                        .addGap(27, 27, 27)
+                        .addComponent(btmSignUp))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
-        jplOpenningPageLayout.setVerticalGroup(
-            jplOpenningPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jplOpenningPageLayout.createSequentialGroup()
-                .addGap(57, 57, 57)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(74, 74, 74)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(64, 64, 64)
-                .addGroup(jplOpenningPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSignIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSignUp))
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addGap(47, 47, 47)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSignIn)
+                    .addComponent(btmSignUp))
+                .addContainerGap(119, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jplOpenningPage, java.awt.BorderLayout.CENTER);
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
+    private void btnSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignInActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnSignUpActionPerformed
+        new SignInPage().setVisible(true);
+    }//GEN-LAST:event_btnSignInActionPerformed
+
+    private void btmSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btmSignUpActionPerformed
+        // TODO add your handling code here:
+        new SignUpPage1().setVisible(true);
+    }//GEN-LAST:event_btmSignUpActionPerformed
 
     /**
      * @param args the command line arguments
@@ -134,9 +144,12 @@ public class OpenningPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btmSignUp;
     private javax.swing.JButton btnSignIn;
-    private javax.swing.JButton btnSignUp;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jplOpenningPage;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
+
+  
+     
 }
