@@ -57,7 +57,7 @@ public class CredentialFunctionality {
                 System.out.println("Enter Email Id :");
                 String email = inputValidation.emailIdValidation(scanner.next(), scanner);
 
-                String password = "Password"  ;
+                String password = ""  ;
                 String confirmPassword  = null ;
                 do{
                     System.out.print("Enter UserName : ");
@@ -72,14 +72,14 @@ public class CredentialFunctionality {
                         else {
 
                             System.out.print("Enter Password : ");
-                            password = scanner.next();
+                            password = new InputValidation().passwordValidation(scanner.next(),scanner);
 
                             System.out.print("Confirm Password :");
-                            confirmPassword = scanner.next();
+                            confirmPassword = new InputValidation().passwordValidation(scanner.next(),scanner);
 
                             if(password.equals(confirmPassword))
                             {
-                                  flag = GlobalDB.dataStoreInTable(userName,password,firstName,lastName,mobileNo,email);
+                                flag = GlobalDB.dataStoreInTable(firstName,lastName,mobileNo,email,userName,password);
                                 System.out.println("Create account successfully ... !!!");
                             }
                             else {

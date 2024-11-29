@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 
+
 public class GlobalDB {
 
     static Connection connection;
@@ -39,16 +40,16 @@ public class GlobalDB {
         }
     }
 
-    public static boolean dataStoreInTable(String userName , String password ,String firstname , String lastname, String mobileno,String email)
+    public static boolean dataStoreInTable(String firstName,String lastName, String mobileNo,String email, String userName,String password)
     {
         try {
 
-            preparedStatement.setString(1,userName);
-            preparedStatement.setString(2,password);
-            preparedStatement.setString(3,firstname);
-            preparedStatement.setString(4,lastname);
-            preparedStatement.setString(5,mobileno);
-            preparedStatement.setString(6,email);
+            preparedStatement.setString(1,firstName);
+            preparedStatement.setString(2,lastName);
+            preparedStatement.setString(3,mobileNo);
+            preparedStatement.setString(4,email);
+            preparedStatement.setString(5,userName);
+            preparedStatement.setString(6,password);
             preparedStatement.execute();
             return true ;
 

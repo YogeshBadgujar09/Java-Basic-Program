@@ -36,6 +36,29 @@ public class InputValidation {
         return emailId ;
     }
 
+    public String passwordValidation(String password, Scanner scanner)
+    {
+        pattern = Pattern.compile( "^[a-zA-Z0-9_+&*-]{8,15}$");
+        matcher = pattern.matcher(password);
+
+        while(!matcher.matches())
+        {
+
+            final int  MAXIMUM_PASS_SIZE = 15;
+            final int MINIMUM_PASS_SIZE = 8 ;
+
+            if(password.length()< MINIMUM_PASS_SIZE){
+                System.out.println("passward minimum size should be 8 Character ");
+            } else if( password.length() > MAXIMUM_PASS_SIZE){
+                System.out.println("passward maximum size should be 15 Character ");
+            }
+
+            password = scanner.next();
+            matcher = pattern.matcher(password);
+        }
+        return password ;
+    }
+
 
 
 }
