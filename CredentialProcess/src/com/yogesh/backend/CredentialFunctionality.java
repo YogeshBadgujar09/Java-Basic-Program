@@ -81,10 +81,10 @@ public class CredentialFunctionality {
                         else {
 
                             System.out.print("Enter Password : ");
-                            password = scanner.next();
+                            password = inputValidation.passwordValidation(scanner.next(), scanner);
 
                             System.out.print("Confirm Password :");
-                            confirmPassword = scanner.next();
+                            confirmPassword = inputValidation.passwordValidation(scanner.next(), scanner); 
 
                             if(password.equals(confirmPassword))
                             {

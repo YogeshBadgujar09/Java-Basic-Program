@@ -4,6 +4,11 @@
  */
 package com.yogesh.frontend;
 
+import com.yogesh.backend.GlobalDB;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Scanner;
+
 /**
  *
  * @author Yogesh
@@ -13,6 +18,8 @@ public class SignInPage extends javax.swing.JFrame {
     /**
      * Creates new form SignInPage
      */
+    
+    Scanner scanner;
     public SignInPage() {       
         initComponents();
     }
@@ -136,7 +143,7 @@ public class SignInPage extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBackToOpenningPageActionPerformed
 
     private void btnSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignInActionPerformed
-       new SignInPage().setVisible(true);
+      new SignInSuccessfull().setVisible(true);        
     }//GEN-LAST:event_btnSignInActionPerformed
 
 //    /**
