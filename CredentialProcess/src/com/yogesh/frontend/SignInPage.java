@@ -18,9 +18,9 @@ public class SignInPage extends javax.swing.JFrame {
     /**
      * Creates new form SignInPage
      */
-    
     Scanner scanner;
-    public SignInPage() {       
+
+    public SignInPage() {
         initComponents();
     }
 
@@ -33,6 +33,7 @@ public class SignInPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel4 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -41,6 +42,10 @@ public class SignInPage extends javax.swing.JFrame {
         txtPassword = new javax.swing.JTextField();
         btnSignIn = new javax.swing.JButton();
         btnBackToOpenningPage = new javax.swing.JButton();
+        lblUserNotfound = new javax.swing.JLabel();
+        lblWrongPasswordMsg = new javax.swing.JLabel();
+
+        jLabel4.setText("jLabel4");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sign In Page");
@@ -82,6 +87,14 @@ public class SignInPage extends javax.swing.JFrame {
             }
         });
 
+        lblUserNotfound.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblUserNotfound.setForeground(new java.awt.Color(255, 0, 51));
+
+        lblWrongPasswordMsg.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblWrongPasswordMsg.setForeground(new java.awt.Color(255, 0, 51));
+        lblWrongPasswordMsg.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lblWrongPasswordMsg.setRequestFocusEnabled(false);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -96,11 +109,15 @@ public class SignInPage extends javax.swing.JFrame {
                         .addGap(135, 135, 135))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
+                            .addComponent(jLabel3)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(lblUserNotfound, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtUsername, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(lblWrongPasswordMsg, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)))
                         .addGap(76, 76, 76))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -112,15 +129,19 @@ public class SignInPage extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(1, 1, 1)
+                .addComponent(lblUserNotfound)
+                .addGap(1, 1, 1)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addGap(2, 2, 2)
+                .addComponent(lblWrongPasswordMsg)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSignIn)
                     .addComponent(btnBackToOpenningPage))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -139,13 +160,45 @@ public class SignInPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackToOpenningPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackToOpenningPageActionPerformed
-      new OpenningPage().setVisible(true);
+        new OpenningPage().setVisible(true);
     }//GEN-LAST:event_btnBackToOpenningPageActionPerformed
 
     private void btnSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignInActionPerformed
-      new SignInSuccessfull().setVisible(true);        
-    }//GEN-LAST:event_btnSignInActionPerformed
 
+        scanner = new Scanner(System.in);
+        GlobalDB.createConnection();
+
+        boolean flag = false;
+
+        String userName = txtUsername.getText();
+        String password = txtPassword.getText();
+
+        ResultSet resultSetUsernameAlreadyAvl = GlobalDB.selectQuery("SELECT * FROM credential WHERE username = '" + userName + "'");
+
+        try {
+            if (resultSetUsernameAlreadyAvl.next()) {
+
+                if (resultSetUsernameAlreadyAvl.getString(5).equals(userName) && resultSetUsernameAlreadyAvl.getString(6).equals(password)) {
+                    System.out.println("Welcome Back .... !!! ");
+                    new SignInSuccessfull().setVisible(true);
+                    flag = true;
+                } else if (resultSetUsernameAlreadyAvl.getString(5).equals(userName)) {
+                    System.out.println("Please enter valid Password ... !!!");
+                    txtPassword.requestFocus();
+                    txtPassword.setText("");
+                }
+            } else {
+                System.out.println("Username Not found ... !!!");
+                txtUsername.requestFocus();
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+
+        GlobalDB.closeConnection();
+
+    }//GEN-LAST:event_btnSignInActionPerformed
+//
 //    /**
 //     * @param args the command line arguments
 //     */
@@ -183,7 +236,10 @@ public class SignInPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblUserNotfound;
+    private javax.swing.JLabel lblWrongPasswordMsg;
     private javax.swing.JTextField txtPassword;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables

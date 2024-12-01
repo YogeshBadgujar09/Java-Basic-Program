@@ -88,7 +88,7 @@ public class CredentialFunctionality {
 
                             if(password.equals(confirmPassword))
                             {
-                                flag = GlobalDB.dataStoreInTable(userName,password,firstName,lastName,mobileNo,email);
+                                flag = GlobalDB.dataStoreInTable(firstName,lastName,mobileNo,email,userName,password);
                                 System.out.println("Create account successfully ... !!!");
                             }
                             else {

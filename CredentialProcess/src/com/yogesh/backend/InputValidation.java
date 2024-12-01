@@ -56,7 +56,6 @@ public class InputValidation {
         
             if(password.length()< MINIMUM_PASS_SIZE){
                 System.out.println("passward minimum size should be 8 Character ");
-                password = " ";
             } else if( password.length() > MAXIMUM_PASS_SIZE){
                 System.out.println("passward maximum size should be 15 Character ");
             }
@@ -67,8 +66,6 @@ public class InputValidation {
         }
         return password ;
     }
-
-    
 
 }
 
