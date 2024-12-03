@@ -3,9 +3,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MainFrame extends JFrame {
+public class Navigation extends JFrame {
 
-    public MainFrame() {
+    public Navigation() {
         // Set the title of the frame
         setTitle("Main Frame");
 
